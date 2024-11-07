@@ -1,0 +1,49 @@
+.about {
+    background-color: #fff;
+    display: flex;
+    justify-content: space-around;
+    /* Adiciona espaço entre o texto e as imagens */
+    align-items: center;
+}
+
+.about {
+    height: 860px;
+}
+
+.sectionAbout{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+#title {
+    font-size: 30px;
+    font-weight: 700;
+    color: #4979b4;
+}
+
+#subtitle {
+    font-size: 24px;
+    font-weight: 400;
+    color: #565656;
+}
+
+.aboutImage{
+    width: 100%;
+    height: auto;
+}
+
+.Puzzle{
+    width: 250px;
+    height: 250px;
+    overflow: hidden;
+    position: absolute;
+    left: -7vw;
+    top: 91.4vw;
+}
+
+.puzzleImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }

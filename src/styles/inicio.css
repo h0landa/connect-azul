@@ -1,0 +1,60 @@
+.slogan {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.inicio {
+    display: flex;
+    justify-content: space-between;
+    /* Adiciona espaço entre o texto e as imagens */
+    align-items: center;
+    /* Alinha o conteúdo verticalmente ao centro */
+    gap: 110px;
+}
+
+.desc{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    padding: 30px;
+}
+
+#titulo {
+    font-size: 47px;
+    font-weight: 700;
+    color: #fff;
+}
+
+#sub-titulo {
+    font-size: 30px;
+    font-weight: 400;
+    color: #fff;
+}
+
+.botoes{
+    display: flex;
+    gap: 20px;
+}
+
+.image-container {
+    position: relative;
+    margin-top: 270px;
+    width: 50%;
+    /* Tamanho adequado para as imagens */
+    height: auto;
+}
+
+.background-image {
+    width: 100%; /* O fundo se ajusta ao container */
+    height: auto;
+  }
+  
+  .overlay-image {
+    position: absolute;
+    top:44.5%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%; /* Aumente o bebê em relação ao fundo */
+    height: auto;
+    z-index: 1; /* Garante que fique acima da imagem de fundo */
+  }
