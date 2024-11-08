@@ -39,11 +39,15 @@
     overflow: hidden;
     position: absolute;
     left: -7vw;
-    top: 91.4vw;
+    top: 95.8vw;
 }
 
 .puzzleImage {
     width: 100%;
     height: 100%;
     object-fit: cover;
+  }
+
+  @media (min-width: 1200px){
+    
   }

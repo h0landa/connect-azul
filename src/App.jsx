@@ -127,6 +127,13 @@ function App() {
           </div>
         </div>
       </section>
+
+      <section className='contato' id='contato'>
+        <div>
+          <h1>OLÁ MUNDO!</h1>
+        </div>
+      </section>
+
     </>
   );
 }
