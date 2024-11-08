@@ -1,76 +1,86 @@
 .recursos {
-    background-color: #fff;
-    height: 760px;
+  background-color: #fff;
 }
 
 /* Estilo geral da seção */
 .resources-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin: 140px 0 20px;
-    /* margem superior e inferior */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 140px 0 20px;
+  /* margem superior e inferior */
 }
 
 /* Estilo do título "Recursos" */
 .resources-section h2 {
-    color: #2b59c3;
-    /* cor azul semelhante à da imagem */
-    font-size: 30px;
-    font-weight: 700;
-    margin-bottom: 20px;
-    padding: 25px;
-    text-align: center;
-    /* centraliza o texto dentro do título */
+  color: #2b59c3;
+  /* cor azul semelhante à da imagem */
+  font-size: 30px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  padding: 25px;
+  text-align: center;
+  /* centraliza o texto dentro do título */
 }
 
 /* Contêiner das colunas de recursos */
 .resources-container {
-    display: flex;
-    justify-content: center;
-    /* centraliza as colunas horizontalmente */
-    gap: 20px;
-    /* espaço entre as colunas */
-    max-width: 900px;
-    width: 100%;
-    /* faz com que as colunas ocupem o espaço total */
-    padding: 20px;
-    margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  /* centraliza as colunas horizontalmente */
+  gap: 20px;
+  /* espaço entre as colunas */
+  max-width: 900px;
+  width: 100%;
+  /* faz com que as colunas ocupem o espaço total */
+  padding: 20px;
+  margin: 0 auto;
 }
 
 /* Colunas individuais de recursos */
 .resource-column {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    /* alinha o texto das colunas à esquerda */
-    max-width: 300px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  /* alinha o texto das colunas à esquerda */
+  max-width: 300px;
 }
 
 /* Estilo dos títulos das colunas */
 .resource-column h3 {
-    color: #407BFF;
-    font-weight: 600;
-    font-size: 1.2em;
-    margin-bottom: 10px;
-    text-align: left;
+  color: #407bff;
+  font-weight: 600;
+  font-size: 1.2em;
+  margin-bottom: 10px;
+  text-align: left;
 }
 
 /* Estilo das listas */
 .resource-column ul {
-    list-style-type: disc;
-    padding-left: 20px;
+  list-style-type: disc;
+  padding-left: 20px;
 }
 
 /* Estilo dos itens da lista */
 .resource-column li {
-    margin-bottom: 8px;
+  margin-bottom: 8px;
 }
 
 /* Estilo dos links */
 .resource-column a {
-    text-decoration: underline;
-    color: black;
+  text-decoration: underline;
+  color: black;
+}
+
+@media (min-width: 1200px) {
+  .recursos {
+    height: 1060px;
+  }
+
+  .cabecalhoImage{
+    width: 100%;
+  }
+
 }
