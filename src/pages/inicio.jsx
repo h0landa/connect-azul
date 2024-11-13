@@ -1,21 +1,21 @@
 import React from 'react';
 import Navbar from '@/components/ui/navBar';
+import { Link } from 'react-router-dom';
 
 import './styles/inicio.css';
 import './styles/como-funciona.css';
 import './styles/recursos.css';
 
-import Button from '../components/ui/button';
+import { Button } from '@/components/ui/button';
 
-import imageElipse from './assets/Ellipse.png';
-import imageBebe from './assets/Child.png';
-import imageSlogan from './assets/Slogan.png';
-import imageAbout from './assets/imageAbout.png';
-import pecaAbout from './assets/peca.png';
-import cabecalho from './assets/cabecalho.png';
+import imageElipse from '@/pages/assets/Ellipse.png';
+import imageBebe from '@/pages/assets/Child.png';
+import imageSlogan from '@/pages/assets/Slogan.png';
+import imageAbout from '@/pages/assets/imageAbout.png';
+import pecaAbout from '@/pages/assets/peca.png';
+import cabecalho from '@/pages/assets/cabecalho.png';
 
-
-function Home() {
+function Inicio() {
   return (
     <>
       {/* Barra de navegação */}
@@ -23,7 +23,6 @@ function Home() {
       <div className='slogan'>
         <img src={imageSlogan} alt="Slogan" className="Slogan" />
       </div>
-      <Routes />
       {/* Sessão: início */}
       <section className="inicio" id="inicio">
         <div className='desc'>
@@ -33,8 +32,8 @@ function Home() {
             precisa para cuidar de quem você ama.
           </p>
           <div className="botoes">
-            <Button className="rounded-sm bg-customBlue" size="lg">Sou um paciente</Button>
-            <Button className="rounded-sm" size="lg" variant="outline">Sou uma clínica</Button>
+            <Button className="rounded-sm bg-customBlue" size="lg"><Link to="/login">Sou um paciente</Link></Button>
+            <Button className="rounded-sm" size="lg" variant="outline"><Link to="/login">Sou uma clínica</Link></Button>
           </div>
         </div>
         <div className="image-container">
@@ -130,4 +129,4 @@ const styles = {
   },
 };
 
-export default Home;
+export default Inicio;

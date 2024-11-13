@@ -1,0 +1,28 @@
+.tela-login {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:center;
+    text-align: center;
+    align-items: center;
+}
+.white-box{
+    display: flex;
+    width: 500px;
+    height: 250px;
+    flex-direction: column;
+    justify-content:center;
+    text-align: center;
+    align-items: center;
+    background-color: white;
+}
+
+h1{
+    text-align:right;
+    color: #4979B4;
+
+}
+input {
+    border-radius: 3px;
+    border-color: #4979B4;
+    border-width: 2px;
+}

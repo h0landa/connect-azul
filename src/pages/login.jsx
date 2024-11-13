@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import {Link} from 'react-router-dom';
 
+import "./styles/inicio.css";
+import "./styles/login.css"
+import imageElipse from './assets/Ellipse.png';
 
 
 function Login () {
@@ -19,13 +22,12 @@ function Login () {
 
         }
 
-    
-
     return (
         <div className = 'tela-login'>
-            <h1 className='bem-vindo'>Bem-Vindo</h1>
+        
             <form onSubmit={handleSubmit}>
                 <div className='white-box'>
+                <h1 className='bem-vindo'>Bem-Vindo</h1>
                 <label>
                 <input type="email" value={email} onChange={(evento) => setEmail(evento.target.value)} required/>
                 Digite seu e-mail.
@@ -42,15 +44,15 @@ function Login () {
 
                 {error && <p style={{color: 'red'}}>{error}</p>}       </div> 
 
-                <Link to="/cadastro">Nâo é usuário? Cadastre-se</Link>
+                <Link to="/cadastroPessoa">Nâo é usuário? Cadastre-se</Link>
                 
                 <button type="submit">Avançar</button>
+                
 
             </form>
-
-
         </div>
 );
+
 
 }
 

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import {Link} from 'react-router-dom';
 
 function Cadastro () {
   const [nome, setNome] = useState('');
@@ -57,7 +58,7 @@ function Cadastro () {
           Confirmação de Senha</label>
         </div>
         <button type="submit">Cadastrar</button>
-        <p className='link-cadastro'><a href="./">Já possui cadastro? Faça Login</a></p>
+        <Link to="/login">Já possui cadastro? Faça Login</Link>
       </form>
     </div>
   );

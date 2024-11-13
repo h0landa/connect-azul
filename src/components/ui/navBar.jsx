@@ -1,5 +1,4 @@
 import React from "react";
-import {Link}  from "react-router-dom";
 
 function Navbar() {
     const smoothScroll = (event, targetId) => {
@@ -14,24 +13,16 @@ function Navbar() {
       <nav style={styles.navbar}>
         <ul style={styles.navList}>
           <li>
-            <Link to="/inicio" style={styles.navItem} onClick={(e) => smoothScroll(e, 'inicio')}>
-              Início
-            </Link>
+            <a href="#inicio" style={styles.navItem} onClick={(e) => smoothScroll(e, 'inicio')}>Início</a>
           </li>
           <li>
-            <Link to="/inicio" style={styles.navItem} onClick={(e) => smoothScroll(e, 'about')}>
-              Como Funciona
-            </Link>
+            <a href="#sobre" style={styles.navItem} onClick={(e) => smoothScroll(e, 'about')}>Como Funciona</a>
           </li>
           <li>
-            <Link to="/inicio" style={styles.navItem} onClick={(e) => smoothScroll(e, 'recursos')}>
-              Recursos
-            </Link>
+            <a href="#recursos" style={styles.navItem} onClick={(e) => smoothScroll(e, 'recursos')}>Recursos</a>
           </li>
           <li>
-            <Link to="/inicio" style={styles.navItem} onClick={(e) => smoothScroll(e, 'contato')}>
-              Contato
-            </Link>
+            <a href="#contato" style={styles.navItem} onClick={(e) => smoothScroll(e, 'contato')}>Contato</a>
           </li>
         </ul>
       </nav>

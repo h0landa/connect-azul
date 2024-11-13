@@ -1,10 +1,9 @@
 import React from 'react';
-import Routes from 'react-router-dom';
-
+import Rotas from './pages/rotas';
 
 function App() {
    return (
-       <Routes/>
+       <Rotas />
    );
 }
 
