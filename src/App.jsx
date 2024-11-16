@@ -10,6 +10,7 @@ import imageSlogan from './assets/Slogan.png';
 import imageAbout from './assets/imageAbout.png';
 import pecaAbout from './assets/peca.png';
 import cabecalho from './assets/cabecalho.png';
+import Rotas from './rotas';
 
 function Navbar() {
   const smoothScroll = (event, targetId) => {
@@ -133,7 +134,7 @@ function App() {
           <h1>OLÁ MUNDO!</h1>
         </div>
       </section>
-
+      <Rotas />
     </>
   );
 }
