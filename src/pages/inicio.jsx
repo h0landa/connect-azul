@@ -1,16 +1,15 @@
-import './styles/inicio.css';
-import './styles/como-funciona.css';
-import './styles/recursos.css';
+import '../styles/inicio.css';
+import '../styles/como-funciona.css';
+import '../styles/recursos.css';
 
-import { Button } from './components/ui/button';
+import { Button } from '@/components/ui/button';
 
-import imageElipse from './assets/Ellipse.png';
-import imageBebe from './assets/Child.png';
-import imageSlogan from './assets/Slogan.png';
-import imageAbout from './assets/imageAbout.png';
-import pecaAbout from './assets/peca.png';
-import cabecalho from './assets/cabecalho.png';
-import Rotas from './rotas';
+import imageElipse from '../assets/Ellipse.png';
+import imageBebe from '../assets/Child.png';
+import imageSlogan from '../assets/Slogan.png';
+import imageAbout from '../assets/imageAbout.png';
+import pecaAbout from "../assets/peca.png";
+import cabecalho from '../assets/cabecalho.png';
 import { Link } from 'react-router-dom';
 
 function Navbar() {
