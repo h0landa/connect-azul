@@ -4,25 +4,24 @@ import {Link} from 'react-router-dom';
 import '../styles/cadastroPessoa.css'
 import imageSlogan from '../assets/Slogan.png'
 
-function Cadastro () {
-  const [nome, setNome] = useState('');
+function CadastroPJ () {
+  const [rsocial, setRsocial] = useState('');
   const [email, setEmail] = useState('');
-  const [cpf, setCpf] = useState('');
+  const [cnpj, setCnpj] = useState('');
   const [dataNascimento, setDataNascimento] = useState('');
   const [telefone, setTelefone] = useState('');
   const [senha, setSenha] = useState('');
   const [confirmacaoSenha, setConfirmacaoSenha] = useState('');
+  const [mensagemErro, setMensagemErro] = useState ('');
 
 
   const handleSubmit = (evento) => {
 
     evento.preventDefault();
     //adicionar a lógica para cadastro
-  }
-  const handleChange = (event) => {
-    setCpf(event.target.value);
-    setError('');
-
+      if (senha !== confirmacaoSenha) {
+        setMensagemErro('Senhas não coincidem!')
+      } else ('')
   }
 
 
@@ -39,8 +38,8 @@ function Cadastro () {
       <form onSubmit={handleSubmit}>
         <div>
           <label className='label-input-cadastroPessoa'>
-          <input className='input-cadastroPessoa' type="text" value={nome} onChange={(evento) => setNome(evento.target.value)} placeholder='Digite seu nome'required/><br/>
-          Nome
+          <input className='input-cadastroPessoa' type="text" value={rsocial} onChange={(evento) => setRsocial(evento.target.value)} placeholder='Digite sua Razão social'required/><br/>
+          Razão Social
           </label>
         </div>
         <div>
@@ -50,14 +49,9 @@ function Cadastro () {
         </div>
         <div>
           <label className='label-input-cadastroPessoa'>
-          <input className='input-cadastroPessoa' type="text" value={cpf} onChange={handleChange} placeholder='000.000.000-00' minLength={11} maxLength={11}  required /> <br/>
-          CPF
+          <input className='input-cadastroPessoa' type="text" value={cnpj} onChange={(evento) => setCnpj(evento.target.value)} placeholder='000.000.000-00' minLength={11} maxLength={11}  required /> <br/>
+          CNPJ
           </label> 
-        </div>
-        <div>
-          <label className='label-input-cadastroPessoa'>
-          <input className='input-cadastroPessoa' type="date" value={dataNascimento} onChange={(evento) => setDataNascimento(evento.target.value)} required /><br/>
-          Data de Nascimento</label>
         </div>
         <div>
           <label className='label-input-cadastroPessoa'>
@@ -77,10 +71,11 @@ function Cadastro () {
 
       </form>
       </div>
+      {mensagemErro && <p style={{ color: 'red' }}>{mensagemErro}</p>}
       <Link to="/login" className='link-login'>Já possui cadastro? Faça Login</Link>
       <button className="submit" type="submit">Cadastrar</button>
     </div>
   );
 };
 
-export default Cadastro;
+export default CadastroPJ;

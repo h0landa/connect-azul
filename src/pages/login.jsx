@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import {Link} from 'react-router-dom';
 
 import "../styles/login.css"
+import imageSlogan from "../assets/Slogan.png"
+import imageElipse from '../assets/Ellipse.png';
 
 function Login () {
     const [email, setEmail] = useState ('');
@@ -21,19 +23,22 @@ function Login () {
 
     return (
         <div className = 'tela-login'>
-        
+
+            <div className='slogan'>
+            <Link to="/"><img src={imageSlogan} alt="Slogan" className="Slogan" /></Link>
+            </div>
+
+
             <form onSubmit={handleSubmit}>
                 <div className='white-box'>
                 <h1 className='bem-vindo'>Bem-Vindo</h1>
                 <label>
-                <input type="email" value={email} onChange={(evento) => setEmail(evento.target.value)} required/>
+                <input placeholder='exemplo@gmail.com' type="email" value={email} onChange={(evento) => setEmail(evento.target.value)} required/>
                 Digite seu e-mail.
                 </label>
-
                 <br />
-
                 <label>
-                <input type="password" value={password} onChange={(evento) => setPassword (evento.target.value)} required/>
+                <input placeholder="**********" type="password" value={password} onChange={(evento) => setPassword (evento.target.value)} required/>
                 Digite sua senha.
                 </label>
 
@@ -41,12 +46,15 @@ function Login () {
 
                 {error && <p style={{color: 'red'}}>{error}</p>}       </div> 
 
-                <Link to="/cadastroPessoa">Nâo é usuário? Cadastre-se</Link>
-                
-                <button type="submit">Avançar</button>
+                <Link to="/cadastroPessoa" className='cadastro'>Não é usuário? Cadastre-se</Link>
+                <br/>
+                <button className="submit" type="submit">Avançar</button>
                 
 
             </form>
+
+        
+
         </div>
 );
 

@@ -55,7 +55,7 @@ function Inicio() {
       {/* Barra de navegação */}
       <Navbar />
       <div className='slogan'>
-        <img src={imageSlogan} alt="Slogan" className="Slogan" />
+      <Link to="/"><img src={imageSlogan} alt="Slogan" className="Slogan" /></Link>
       </div>
 
       {/* Sessão: início */}
@@ -67,8 +67,8 @@ function Inicio() {
             precisa para cuidar de quem você ama.
           </p>
           <div className="botoes">
-            <Button as={Link} to="/cadastroPessoa" className="rounded-sm bg-customBlue" size="lg">Sou um paciente</Button>
-            <Button className="rounded-sm" size="lg" variant="outline">Sou uma clínica</Button>
+            <Link to="/cadastroPessoa" type="button" className="rounded-sm bg-customBlue">Sou um paciente</Link>
+            <Link to="/cadastroPJ" type="button" className="rounded-sm" size="lg" variant="outline">Sou uma clínica</Link>
           </div>
         </div>
         <div className="image-container">
