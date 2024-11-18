@@ -1,0 +1,26 @@
+{
+    "clinicas": [
+      {
+        "id": 1,
+        "nome": "Clínica do Shopping",
+        "especialidade": "Nutrição para Emagrecimento",
+        "endereco": "Av. Marelo Rocha, 3775, 95270-000",
+        "telefone": "3214-5545/9998-456"
+      },
+      {
+        "id": 2,
+        "nome": "Clínica Saúde Total",
+        "especialidade": "Cardiologia",
+        "endereco": "Rua das Flores, 123, 98765-432",
+        "telefone": "3456-7890/1234-5678"
+      },
+      {
+        "id": 3,
+        "nome": "Clínica Bem-Estar",
+        "especialidade": "Fisioterapia",
+        "endereco": "Av. Rio Branco, 987, 76543-210",
+        "telefone": "2345-6789/8765-4321"
+      }
+    ]
+  }
+  

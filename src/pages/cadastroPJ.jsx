@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import {Link} from 'react-router-dom';
 
-import '../styles/cadastroPessoa.css'
+import '../styles/cadastroPJ.css'
 import imageSlogan from '../assets/Slogan.png'
 
 function CadastroPJ () {
