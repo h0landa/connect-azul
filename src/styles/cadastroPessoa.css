@@ -13,21 +13,21 @@ body {
     align-items: center;
 
 }
-.white-box-cadastro {
+.white-box-cadastroPessoa {
     margin-top: 100px;
     width: 350px;
-    height: 632px;
+    height: 592px;
     background-color: white;
     border-radius: 24px;
 }
 
 .input-cadastroPessoa {
-    margin-top: 10px;
+    margin-top: 8px;
     margin-left: -15px;
+    width: 250px;
+    height: 45px;
     align-items: center;
-    justify-content: center;
-    text-align: left;
-    
+    justify-content: center;    
 }
 
 .slogan {
@@ -38,15 +38,14 @@ body {
 }
 
 .label-input-cadastroPessoa {
-    text-align: left;
     align-items:baseline;
     font-size: 10pt;
     justify-content: baseline;
     flex-direction: row;
 }
 
-label {
-    text-align: left; 
+.label-input-cadastroPessoa {
+    background-color: #fff;
     margin-left: 20px;
     margin-top: -15px;
  }
@@ -55,3 +54,10 @@ label {
     margin-top: 10px;
     margin-bottom: 10px;
  }
+
+ .submit-cadastroPessoa {
+    margin-top: 8px;
+    border-radius: 14px;
+    background-color: #407BFF;
+    color: #fff;
+}

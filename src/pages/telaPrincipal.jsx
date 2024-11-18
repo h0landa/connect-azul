@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import '../styles/telaPrincipal.css'
-import api from 'services/api';
 
 function TelaPrincipal() {
   const [clinicas, setClinicas] = useState([]);

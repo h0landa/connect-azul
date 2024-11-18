@@ -32,13 +32,13 @@ function Login () {
             <form onSubmit={handleSubmit}>
                 <div className='white-box'>
                 <h1 className='bem-vindo'>Bem-Vindo</h1>
-                <label>
-                <input placeholder='exemplo@gmail.com' type="email" value={email} onChange={(evento) => setEmail(evento.target.value)} required/>
+                <label className='label-login'>
+                <input className="input-login" placeholder='exemplo@gmail.com' type="email" value={email} onChange={(evento) => setEmail(evento.target.value)} required/><br/>
                 Digite seu e-mail.
                 </label>
                 <br />
-                <label>
-                <input placeholder="**********" type="password" value={password} onChange={(evento) => setPassword (evento.target.value)} required/>
+                <label className='label-login'>
+                <input className="input-login" placeholder="**********" type="password" value={password} onChange={(evento) => setPassword (evento.target.value)} required/><br/>
                 Digite sua senha.
                 </label>
 

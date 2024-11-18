@@ -34,7 +34,7 @@ function Cadastro () {
       <Link to="/"><img src={imageSlogan} alt="Slogan" className="Slogan" /></Link>
       </div>
 
-      <div className="white-box-cadastro">
+      <div className="white-box-cadastroPessoa">
       <br/>
       <form onSubmit={handleSubmit}>
         <div>
@@ -78,7 +78,7 @@ function Cadastro () {
       </form>
       </div>
       <Link to="/login" className='link-login'>Já possui cadastro? Faça Login</Link>
-      <button className="submit" type="submit">Cadastrar</button>
+      <button className="submit-cadastroPessoa" type="submit">Cadastrar</button>
     </div>
   );
 };
