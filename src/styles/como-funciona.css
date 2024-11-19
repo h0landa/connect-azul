@@ -7,13 +7,17 @@
 }
 
 .about {
-    height: 860px;
+    height: 1080px;
 }
 
-.sectionAbout{
+.sectionAbout {
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    align-items: flex-start;
+    /* Alinha o conteúdo ao início */
+    text-align: left;
+    /* Garante o alinhamento do texto */
+    gap: 60px;
 }
 
 #title {
@@ -25,46 +29,25 @@
 #subtitle {
     font-size: 24px;
     font-weight: 400;
+    margin-top: -30px;
     color: #565656;
 }
 
-.aboutImage{
+.aboutImage {
     width: 100%;
     height: auto;
 }
 
-.Puzzle{
-    width: 250px;
-    height: 250px;
-    overflow: hidden;
-    position: absolute;
-    left: -7vw;
-    top: 95.8vw;
+.button3 {
+    padding: 22px;
+    font-size: 20px;
+    background-color: #4979B4;
+    border-radius: 24px;
+    transition: ease 0.5s;
 }
 
-.puzzleImage {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
 
-  @media (min-width: 1200px){
-    .about {
-        height: 1060px;
-    }
-
-    .Puzzle{
-        width: 350px;
-        height: 350px;
-        overflow: hidden;
-        position: absolute;
-        left: -7vw;
-        top: 88.1vw;
-    }
-    
-    .puzzleImage {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
-  }
+.button3:hover {
+    background-color: #12345d;
+    color: #fff;
+}

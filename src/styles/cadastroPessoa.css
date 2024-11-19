@@ -70,3 +70,8 @@ body {
     background-color: #407BFF;
     color: #fff;
  } 
+
+ .submit-cadastroPessoa:hover{
+   background-color: #12345d;
+   transition: ease 0.5s;
+ }
