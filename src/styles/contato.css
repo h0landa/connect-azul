@@ -1,0 +1,136 @@
+/* Contêiner geral */
+.contato {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100vh;
+    background-color: #4979b4;
+    /* Fundo azul */
+    padding: 0 30%;
+    overflow: hidden;
+    /* Garante que as bolas e outros elementos não ultrapassem a área visível */
+}
+
+/* Bolas decorativas */
+.bola {
+    position: absolute;
+    border-radius: 50%;
+    background-color: #417af6;
+    /* Transparente */
+    z-index: 1;
+}
+
+.fundo-bola-1 {
+    width: 500px;
+    height: 500px;
+    top: 60%;
+    left: -100px;
+}
+
+.fundo-bola-2 {
+    width: 500px;
+    height: 500px;
+    bottom: -300px;
+    right: -100px;
+}
+
+.fundo-bola-3 {
+    width: 500px;
+    height: 500px;
+    top: -30%;
+    left: 680px;
+}
+
+/* Estilo do formulário */
+.formulario {
+    position: relative;
+    background-color: rgba(255, 255, 255, 0.1);
+    /* Fundo semi-transparente */
+    padding: 30px 20px;
+    border-radius: 15px;
+    width: 350px;
+    z-index: 2;
+    /* Mantém o formulário acima das bolas */
+}
+
+.formulario h2 {
+    display: flex;
+    color: #fff;
+    margin-bottom: 20px;
+    font-size: 25px;
+    text-align: flex-start;
+}
+
+.input-email::placeholder{
+    color: #fff;
+}
+
+.input-mensagem::placeholder{
+    color: #fff;
+}
+
+.input-email{
+    width: 100%;
+    padding: 20px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0);
+}
+.input-mensagem {
+    width: 100%;
+    padding: 20px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0);
+}
+
+.input-mensagem {
+    height: 180px;
+}
+
+.botao-enviar {
+    width: 100%;
+    padding: 10px;
+    font-size: 20px;
+    background-color: #315b8e;
+    color: #fff;
+    border: none;
+    border-radius: 22px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.botao-enviar:hover {
+    background-color: #26466d;
+}
+
+/* Informações de contato */
+.informacoes-contato {
+    position: relative;
+    color: #fff;
+    z-index: 2;
+}
+
+.informacoes-contato h2 {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 20px;
+    font-size: 30px;
+    font-weight: 700;
+}
+
+.icones-contato {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 30px;
+}
+
+.icones-contato img {
+    width: 24px;
+    height: 24px;
+}
