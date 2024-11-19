@@ -93,14 +93,11 @@ function Inicio() {
            uma busca avançada. Facilita a comunicação e promove<br />
            uma comunidade de suporte para melhorar a qualidade de vida.</p>
          <div>
-           <Button className="rounded-sm bg-customBlue" size="lg">Crie já seu cadastro!</Button>
+         <Link to="/cadastroPessoa" type="button" className="button3">Crie já seu cadastro</Link>
          </div>
        </div>
        <div className='imageAbout'>
          <img src={imageAbout} alt="image" className="aboutImage" />
-       </div>
-       <div className="Puzzle">
-         <img src={pecaAbout} alt="quebra-cabeça" className="puzzleImage" />
        </div>
      </section>
 
