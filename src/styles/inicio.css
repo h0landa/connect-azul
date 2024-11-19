@@ -1,55 +1,90 @@
 .slogan {
     display: flex;
     justify-content: flex-end;
-}
-
-.inicio {
+ }
+ 
+ 
+ .inicio {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     /* Adiciona espaço entre o texto e as imagens */
     align-items: center;
     /* Alinha o conteúdo verticalmente ao centro */
     gap: 110px;
-}
-
-.desc{
+ }
+ 
+ 
+ .desc{
     display: flex;
     flex-direction: column;
     gap: 30px;
     padding: 30px;
-}
-
-#titulo {
+ }
+ 
+ 
+ #titulo {
     font-size: 47px;
     font-weight: 700;
     color: #fff;
-}
-
-#sub-titulo {
+ }
+ 
+ 
+ #sub-titulo {
     font-size: 30px;
     font-weight: 400;
     color: #fff;
-}
-
-.botoes{
+ }
+ 
+ 
+ .botoes{
     display: flex;
     gap: 20px;
-}
-
-.image-container {
+ }
+ 
+ 
+ .button1{
+    padding: 18px;
+    background-color: #4979B4;
+    border-radius: 28px;
+    transition: ease 0.5s;
+ }
+ 
+ 
+ .button1:hover{
+    background-color: #fff;
+    color: #4979B4;   
+ }
+ 
+ 
+ .button2{
+    padding: 18px;
+    background-color: #fff;
+    color: #4979B4;
+    border-radius: 28px;
+    transition: ease 0.5s;
+ }
+ 
+ 
+ .button2:hover{
+    background-color: #e0dede;
+    color: #4979B4;   
+ }
+ 
+ 
+ .image-container {
     position: relative;
     margin-top: 270px;
     width: 50%;
     /* Tamanho adequado para as imagens */
     height: auto;
-}
-
-.background-image {
+ }
+ 
+ 
+ .background-image {
     width: 100%; /* O fundo se ajusta ao container */
     height: auto;
   }
-  
-  .overlay-image {
+   .overlay-image {
     position: absolute;
     top:44.5%;
     left: 50%;
@@ -57,4 +92,4 @@
     width: 100%; /* Aumente o bebê em relação ao fundo */
     height: auto;
     z-index: 1; /* Garante que fique acima da imagem de fundo */
-  }
+  } 
