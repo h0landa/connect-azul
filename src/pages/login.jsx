@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {Link} from 'react-router-dom';
 
 import "../styles/login.css"
@@ -18,6 +18,7 @@ function Login () {
                             //colocar aqui o redirecionamento da rota para onde o usuario vai quando for autenticado
                             
             }
+
 
         }
 
