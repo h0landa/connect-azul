@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import {Link} from 'react-router-dom';
 
-import "../styles/login.css"
-import imageSlogan from "../assets/Slogan.png"
+import "../styles/login.css";
+import imageSlogan from "../assets/Slogan.png";
 import imageElipse from '../assets/Ellipse.png';
 
 function Login () {

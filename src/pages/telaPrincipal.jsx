@@ -1,39 +1,26 @@
-import React, { useState, useEffect } from 'react';
+import React from "react";
 import '../styles/telaPrincipal.css'
 
-function TelaPrincipal() {
-  const [clinicas, setClinicas] = useState([]);
-  const [busca, setBusca] = useState('');
+import imageSlogan from "../assets/Slogan.png";
 
- 
-  const clinicasFiltradas = clinicas.filter(clinica =>
-    clinica.nome.toLowerCase().includes(busca.toLowerCase())
-  );
-
+function TelaPrincipal () {
+  
   return (
-    <div className="app-container">
-      <header>
-        <h1>Connect Azul</h1>
-        <input type="text" 
-          placeholder="Nome da clinica"
-          value={busca}
-          onChange={(e) => setBusca(e.target.value)}
-        />
-      </header>
-      
-      <div className="clinicas-list">
-        {clinicasFiltradas.map((clinica, index) => (
-          <div key={index} className="clinica-card">
-            <h3>{clinica.nome}</h3>
-            <p><strong>Especialidade:</strong> {clinica.especialidade}</p>
-            <p><strong>Endereço:</strong> {clinica.endereco}</p>
-            <p><strong>Telefone:</strong> {clinica.telefone}</p>
-            <button>Faixa Etária</button>
-          </div>
-        ))}
-      </div>
+    <div className="tela-principal">
+
+            <div className='slogan'>
+            <Link to="/"><img src={imageSlogan} alt="Slogan" className="Slogan" /></Link>
+            </div>
+
+
+      <h1 className="em-cost">
+      Pagina em construção!
+      </h1>
+      <FontAwesomeIcon icon={faGear} />
+
     </div>
-  );
+  )
+
 }
 
 export default TelaPrincipal;
