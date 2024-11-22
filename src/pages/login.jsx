@@ -9,6 +9,11 @@ function Login () {
     const [email, setEmail] = useState ('');
     const [password, setPassword] = useState ('');
     const [error, setError] = useState ('');
+
+    const emailValido =(email) => /\S+@\S+\.\S+/.test(email);
+    const senhaValida = (password) => password.length >= 10;
+
+
         const handleSubmit = (evento) => {
             evento.preventDefault();
                 //colocar aqui a requisição de uma API de autenticação que será feita pelo backend
@@ -18,6 +23,13 @@ function Login () {
                             //colocar aqui o redirecionamento da rota para onde o usuario vai quando for autenticado
                             
             }
+
+            try {
+                const requisicao = await axios.get ('../services/db_clinicas.json',{params: { email, password}} ,'../services/db_pessoa.json' ,{params: { email, password}});
+                const user = requisicao.data.find((user) => user.email === email && user.password === password);
+                
+            }
+
 
 
         }
@@ -34,13 +46,11 @@ function Login () {
                 <div className='white-box'>
                 <h1 className='bem-vindo'>Bem-Vindo</h1>
                 <label className='label-login'>
-                <input className="input-login" placeholder='exemplo@gmail.com' type="email" value={email} onChange={(evento) => setEmail(evento.target.value)} required/><br/>
-                Digite seu e-mail.
+                <input className="input-login" placeholder='Digite seu e-mail' type="email" value={email} onChange={(evento) => setEmail(evento.target.value)} required/><br/>
                 </label>
                 <br />
                 <label className='label-login'>
-                <input className="input-login" placeholder="**********" type="password" value={password} onChange={(evento) => setPassword (evento.target.value)} required/><br/>
-                Digite sua senha.
+                <input className="input-login" placeholder="Digite sua senha" type="password" value={password} onChange={(evento) => setPassword (evento.target.value)} required/><br/>
                 </label>
 
                 <br />

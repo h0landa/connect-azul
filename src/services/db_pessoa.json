@@ -6,7 +6,8 @@
         "cpf": "700.000.000-61",
         "data": "11/05/1994",
         "tel": "(84) 99009-0000",
-        "password" : "jeffersonjefferson"      
+        "password" : "jeffersonjefferson",
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjg2NjY0NTQyLCJleHBpcmVkX3N0YXR1cyI6ImFjdGl2ZWRfIn0.gTf5dYMy_O2eUeg35Fuw5gUkffhYPWZ5w6Jhb4G4fH6"    
     }
     ]
 }
