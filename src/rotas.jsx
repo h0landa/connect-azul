@@ -5,7 +5,7 @@ import Inicio from "./pages/inicio";
 import Login from "./pages/login";         
 import Cadastro from "./pages/cadastroPessoa"; 
 import CadastroPJ from "./pages/cadastroPJ";
-import TelaPrincipal from "./pages/telaPrincipal";
+import TelaPrincipal from "./pages/telaPrincipal.jsx";
 
 const Rotas = () => {
     return (
@@ -15,7 +15,7 @@ const Rotas = () => {
                 <Route path="/login" element={<Login />} />
                 <Route path="/cadastroPessoa" element={<Cadastro />} />
                 <Route element={<CadastroPJ/>} path="/cadastroPJ" />
-                <Route element={< TelaPrincipal />} path="/clinicas"/>
+                <Route element={<TelaPrincipal/>} path="/telaPrincipal"/>
             </Routes>
         </BrowserRouter>
     );
