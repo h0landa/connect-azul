@@ -11,4 +11,4 @@ Currently, two official plugins are available:
 
 react-router-dom : npm install react-router-dom
 Axios : npm install axios
-Json-server : npm install -g json-server
+Json-server : npm install -g json-server || json-server --watch services/db.json //para abrir o servidor.
