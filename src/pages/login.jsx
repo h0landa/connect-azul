@@ -1,46 +1,69 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 
+// Styles
 import "../styles/login.css";
+
+// Assets
 import imageSlogan from "../assets/Slogan.png";
-import imageElipse from "../assets/Ellipse.png";
+
+// Validation Utilities
+const validateEmail = (email) => /\S+@\S+\.\S+/.test(email);
+const validatePassword = (password) => password.length >= 6;
 
 function Login() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  // State Management
+  const [loginData, setLoginData] = useState({
+    email: "",
+    password: ""
+  });
   const [error, setError] = useState("");
+
+  // Navigation Hook
   const navigate = useNavigate();
 
-  const emailValido = (email) => /\S+@\S+\.\S+/.test(email);
-  const senhaValida = (password) => password.length >= 10;
+  // Input Change Handler
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setLoginData(prevState => ({
+      ...prevState,
+      [name]: value
+    }));
+  };
 
-  const handleSubmit = async (evento) => {
-    evento.preventDefault();
-
-    // Validações de entrada
-    if (!emailValido(email)) {
+  // Form Submission Handler
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    
+    // Input Validations
+    if (!validateEmail(loginData.email)) {
       setError("Por favor, insira um email válido.");
       return;
     }
 
-    if (!senhaValida(password)) {
+    if (!validatePassword(loginData.password)) {
       setError("A senha deve ter pelo menos 6 caracteres.");
       return;
     }
 
     try {
-      // Requisição ao servidor
-      const requisicao = await axios.get("http://localhost:3000/Pessoa", {
-        params: { email, password },
+      // Server Request
+      const response = await axios.get("http://localhost:3000/Pessoa", {
+        params: { 
+          email: loginData.email, 
+          password: loginData.password 
+        }
       });
 
-      const user = requisicao.data.find(
-        (Pessoa) => Pessoa.email === email && Pessoa.password === password
+      const user = response.data.find(
+        (pessoa) => 
+          pessoa.email === loginData.email && 
+          pessoa.password === loginData.password
       );
 
       if (user) {
-        // Salva o token no localStorage e redireciona
-       // localStorage.setItem("authToken", user.token);
+        // Successful Login
         navigate("/telaPrincipal");
       } else {
         setError("Login ou senha inválidos");
@@ -51,6 +74,56 @@ function Login() {
     }
   };
 
+  // Render Login Form
+  const renderLoginForm = () => (
+    <form onSubmit={handleSubmit}>
+      <div className="white-box">
+        <h1 className="bem-vindo">Bem-Vindo</h1>
+        
+        {renderInputField(
+          "email", 
+          "Digite seu e-mail", 
+          "email", 
+          loginData.email
+        )}
+        
+        {renderInputField(
+          "password", 
+          "Digite sua senha", 
+          "password", 
+          loginData.password
+        )}
+
+        {error && <p className="error-message">{error}</p>}
+      </div>
+
+      <div className="form-actions">
+        <Link to="/cadastroPessoa" className="cadastro">
+          Não é usuário? Cadastre-se
+        </Link>
+        
+        <button className="submit" type="submit">
+          Avançar
+        </button>
+      </div>
+    </form>
+  );
+
+  // Reusable Input Field Renderer
+  const renderInputField = (name, placeholder, type, value) => (
+    <label className="label-login">
+      <input
+        name={name}
+        className="input-login"
+        placeholder={placeholder}
+        type={type}
+        value={value}
+        onChange={handleInputChange}
+        required
+      />
+    </label>
+  );
+
   return (
     <div className="tela-login">
       <div className="slogan">
@@ -59,45 +132,7 @@ function Login() {
         </Link>
       </div>
 
-      <form onSubmit={handleSubmit}>
-        <div className="white-box">
-          <h1 className="bem-vindo">Bem-Vindo</h1>
-          <label className="label-login">
-            <input
-              className="input-login"
-              placeholder="Digite seu e-mail"
-              type="email"
-              value={email}
-              onChange={(evento) => setEmail(evento.target.value)}
-              required
-            />
-            <br />
-          </label>
-          <br />
-          <label className="label-login">
-            <input
-              className="input-login"
-              placeholder="Digite sua senha"
-              type="password"
-              value={password}
-              onChange={(evento) => setPassword(evento.target.value)}
-              required
-            />
-            <br />
-          </label>
-          <br />
-
-          {error && <p style={{ color: "red" }}>{error}</p>}
-        </div>
-
-        <Link to="/cadastroPessoa" className="cadastro">
-          Não é usuário? Cadastre-se
-        </Link>
-        <br />
-        <button className="submit" type="submit">
-          Avançar
-        </button>
-      </form>
+      {renderLoginForm()}
     </div>
   );
 }
