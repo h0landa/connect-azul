@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-
+import axios from 'axios';
 import '../styles/cadastroPessoa.css';
 import imageSlogan from '../assets/Slogan.png';
 
@@ -14,6 +14,7 @@ function Cadastro() {
   const [confirmacaoSenha, setConfirmacaoSenha] = useState('');
   const [error, setError] = useState('');
   const [successo, setSuccesso] = useState(false);
+  const [roles, setRoles] = useState('USER');
 
   const validarCPF = (cpf) => {
     cpf = cpf.replace(/[^\d]+/g, '');
@@ -30,10 +31,6 @@ function Cadastro() {
     return resto === parseInt(cpf.substring(10, 11));
   };
 
-  const validarSenha = (senha) => {
-    const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/;
-    return regex.test(senha);
-  };
 
   const handleSubmit = async (evento) => {
     evento.preventDefault();
@@ -42,20 +39,16 @@ function Cadastro() {
       setError('CPF inválido!');
       return;
     }
-    if (!validarSenha(senha)) {
-      setError('A senha deve conter no mínimo 6 caracteres, uma letra maiúscula, uma minúscula, um número e um caractere especial.');
-      return;
-    }
     if (senha !== confirmacaoSenha) {
       setError('As senhas não coincidem.');
       return;
     }
 
     // Preparar os dados para envio
-    const usuario = { nome, email, cpf, dataNascimento, telefone, senha};
-
+    const usuario = { nome, email, senha, roles};
+    console.log('Corpo da requisição:', usuario);
     try {
-      const response = await axios.post('http://localhost:3000/Pessoa', usuario);
+      const response = await axios.post('http://localhost:8080/auth/register', usuario);
       console.log('Resposta do servidor:', response.data);
       setSuccesso(true);
       setError('');
