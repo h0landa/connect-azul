@@ -6,6 +6,7 @@ import Login from "./pages/login";
 import Cadastro from "./pages/cadastroPessoa"; 
 import CadastroPJ from "./pages/cadastroPJ";
 import TelaPrincipal from "./pages/telaPrincipal.jsx";
+import Pesquisa from "./pages/telaPesquisa";
 
 const Rotas = () => {
     return (
@@ -14,6 +15,7 @@ const Rotas = () => {
                 <Route element={<Inicio/>} path="/" />
                 <Route path="/login" element={<Login />} />
                 <Route path="/cadastroPessoa" element={<Cadastro />} />
+                <Route path="/pesquisa" element={<Pesquisa />} />
                 <Route element={<CadastroPJ/>} path="/cadastroPJ" />
                 <Route element={<TelaPrincipal/>} path="/telaPrincipal"/>
             </Routes>

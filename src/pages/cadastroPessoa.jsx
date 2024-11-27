@@ -7,9 +7,6 @@ import imageSlogan from '../assets/Slogan.png';
 function Cadastro() {
   const [nome, setNome] = useState('');
   const [email, setEmail] = useState('');
-  const [cpf, setCpf] = useState('');
-  const [dataNascimento, setDataNascimento] = useState('');
-  const [telefone, setTelefone] = useState('');
   const [senha, setSenha] = useState('');
   const [confirmacaoSenha, setConfirmacaoSenha] = useState('');
   const [error, setError] = useState('');
@@ -35,10 +32,6 @@ function Cadastro() {
   const handleSubmit = async (evento) => {
     evento.preventDefault();
 
-    if (!validarCPF(cpf)) {
-      setError('CPF inválido!');
-      return;
-    }
     if (senha !== confirmacaoSenha) {
       setError('As senhas não coincidem.');
       return;
@@ -71,42 +64,30 @@ function Cadastro() {
       <div className="white-box-cadastroPessoa">
         <br />
         <form onSubmit={handleSubmit}>
-          <div>
+          
             <label className="label-input-cadastroPessoa">
-              <input className="input-cadastroPessoa" type="text" value={nome} onChange={(evento) => setNome(evento.target.value)} placeholder="Nome completo" required /><br />
+              <input className="input-cadastroPessoa" type="text" value={nome} onChange={(evento) => setNome(evento.target.value)} placeholder="Nome usuário" required /><br />
             </label>
-          </div>
-          <div>
+          
+          
             <label className="label-input-cadastroPessoa">
               <input className="input-cadastroPessoa" type="email" value={email} onChange={(evento) => setEmail(evento.target.value)} placeholder="E-mail" required /><br />
             </label>
-          </div>
-          <div>
-            <label className="label-input-cadastroPessoa">
-              <input className="input-cadastroPessoa" type="text" value={cpf} onChange={(evento) => setCpf(evento.target.value)} placeholder="CPF" minLength={11} maxLength={11} required /><br />
-            </label>
-          </div>
-          <div>
-            <label className="label-input-cadastroPessoa">
-              <input className="input-cadastroPessoa" placeholder="Data de Nascimento" type="date" value={dataNascimento} onChange={(evento) => setDataNascimento(evento.target.value)} required /><br />
-            </label>
-          </div>
-          <div>
-            <label className="label-input-cadastroPessoa">
-              <input className="input-cadastroPessoa" type="tel" value={telefone} onChange={(evento) => setTelefone(evento.target.value)} placeholder="Telefone" minLength={11} maxLength={11} required /><br />
-            </label>
-          </div>
-          <div>
+          
+          
             <label className="label-input-cadastroPessoa">
               <input className="input-cadastroPessoa" type="password" value={senha} onChange={(evento) => setSenha(evento.target.value)} placeholder="Senha" minLength={6} required /><br />
-              Senha deve conter no mínimo 10 dígitos, uma letra minúscula, uma maiúscula e um caractere especial.
             </label>
-          </div>
-          <div>
+            <div className='alerta-senha'>
+            Senha deve conter no mínimo 10 dígitos, uma letra minúscula,
+             uma maiúscula e um caractere especial.
+            </div>
+          
+          
             <label className="label-input-cadastroPessoa">
               <input className="input-cadastroPessoa" type="password" value={confirmacaoSenha} onChange={(evento) => setConfirmacaoSenha(evento.target.value)} placeholder="Confirme sua Senha" required /><br />
             </label>
-          </div>
+          
           {error && <div className="error-message">{error}</div>}
           {successo && <div className="successo-message">Cadastro realizado com sucesso!</div>}
           <button className="submit-cadastroPessoa" type="submit">Cadastrar</button>

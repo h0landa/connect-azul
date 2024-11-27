@@ -14,25 +14,29 @@ body {
  
  }
  .white-box-cadastroPessoa {
-    margin-top: 100px;
+   align-items: center;
+   justify-content: center;
+    margin: 0 auto;
     width: 350px;
-    height: 500px;
     background-color: white;
     border-radius: 24px;
-    
  }
  
  label.label-input-cadastroPessoa {
    font-size: 7pt;
-     
+}
+
+.alerta-senha {
+   font-size: 7pt;
+   display: block;
+   width: 100%;
 }
 
  .input-cadastroPessoa {
     margin-top: 8px;
     background-color: #fff;
     margin-top: 10px;
-    margin-left: -15px;
-    width: 250px;
+    width: 95%;
     height: 45px;
     align-items: center;
     justify-content: center;   
@@ -49,10 +53,8 @@ body {
  }
  
  .label-input-cadastroPessoa {
-    background-color: #fff;
-    margin-left: 20px;
-    margin-top: -15px;
-    
+    background-color: #f0f0f0;
+    width: 100%;
  }
  .link-login {
     margin-top: 10px;
@@ -65,6 +67,7 @@ body {
     border-radius: 14px;
     background-color: #407BFF;
     color: #fff;
+    margin: 10px;
  } 
 
  .submit-cadastroPessoa:hover{

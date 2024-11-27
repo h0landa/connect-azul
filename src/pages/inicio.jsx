@@ -46,8 +46,14 @@ function Navbar() {
             >
               {label}
             </a>
-          </li>
+          </li>          
         ))}
+        <li>
+        <Link to="/pesquisa" type="button" className="button-30" size="lg" variant="outline">
+            ACHAR ClÍNICAS
+        </Link>
+          
+        </li>
       </ul>
     </nav>
   );
@@ -80,6 +86,7 @@ function Inicio() {
           <Link to="/cadastroPJ" type="button" className="button2" size="lg" variant="outline">
             Sou uma clínica
           </Link>
+          
         </div>
       </div>
       <div className="image-container">
