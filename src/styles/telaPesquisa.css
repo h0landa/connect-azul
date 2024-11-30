@@ -1,59 +1,78 @@
 body {
-    background-color: white;
+  background-color: #F4F7FB;
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
+/* body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f2f5;
+  margin: 0;
+  padding: 20px;
+} */
 
 .pesquisa-container {
-    margin: 20px;
+    /* margin: 20px; */
     font-family: Arial, sans-serif;
+    background-color: "#FFFFFF";
   }
-  
+
   .pesquisa-container h1 {
-    margin-bottom: 20px;
+    /* margin-bottom: 20px; */
   }
-  
+
   .input-container {
+    height: 65px;
+    width: 605px;
     display: flex;
     gap: 10px;
-    margin-bottom: 20px;
+    border-radius: 10px;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 0;
+    background-color: #F4F7FB;
+    border: 4px solid #407BFF;
   }
-  
+
   .input-pesquisa {
     flex: 1;
     padding: 8px;
     font-size: 16px;
   }
-  
+
   .button-pesquisa {
     padding: 8px 12px;
     font-size: 16px;
     cursor: pointer;
   }
-  
+
   .button-pesquisa:disabled {
     cursor: not-allowed;
   }
-  
+
   .resultados-lista {
     list-style-type: none;
     padding: 0;
   }
-  
+
   .resultado-item {
     padding: 5px 0;
     border-bottom: 1px solid #ccc;
   }
-  
+
 
 .input-barra-pesquisa {
-    background-color: white;
-    padding: 15px 10px 15px 10px;
     width: 50vw;
-    border-radius: 10px;
-    border: 4px solid #000;
+    background-color: #F4F7FB;
     flex: 1;
-    margin-bottom: 20px;
+    color: #565656;
+    height: 50px;
+    width: 595px;
+    margin-left: 5px;
+    margin-right: 0;
+    /* margin-bottom: 20px;   */
+    /* padding: 10px; */
+  /* padding-right: 30px; Espaço para o ícone */
+  width: 100%;
 }
-
 
 .resultado-cards {
   display: grid;  /* Usando grid para criar um layout de cartões */
@@ -168,7 +187,70 @@ body {
   word-break: break-word;
   border: 0;
 }
+.search-icon {
+  /* position: absolute; */
+  /* right: 10px; Ajuste a posição do ícone */
+  /* top: 50%; */
+  margin-bottom: 0;
+  justify-content: center;
+  align-items: center;
+  transform: translateY(-50%); /* Centraliza o ícone verticalmente */
+  cursor: pointer;
+}
+
+
+.card {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  margin-top: 20;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+
+.card img {
+  width: 20px;
+  height: 20px;
+  margin-left: 10px;
+}
+
+.card .title {
+  font-size: 18px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+}
+
+.card .details {
+  margin-top: 10px;
+}
+
+.card .details div {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.card .details div i {
+  margin-right: 10px;
+}
+
+.card .badge {
+  background-color: #6c8ebf;
+  font-weight: 500;
+  color: #fff;
+  border-radius: 50%;
+  width: 149px;
+  height: 149px;
+  /* right: 20px; */
+  font-size: 14px;
+  justify-content: center;
+  align-content: center;
+}
 
 
 
-  
