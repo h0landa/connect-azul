@@ -48,12 +48,12 @@ function Navbar() {
             </a>
           </li>          
         ))}
-        <li>
-        <Link to="/pesquisa" type="button" className="button-30" size="lg" variant="outline">
-            ACHAR ClÍNICAS
-        </Link>
-          
-        </li>
+
+          <li>
+          <Link to="/pesquisa" type="button" className="button-30"   style={{ paddingTop: 5,paddingBottom:5 }}>
+              PROCURAR ClÍNICAS
+          </Link>
+          </li>
       </ul>
     </nav>
   );
@@ -106,11 +106,11 @@ function Inicio() {
           uma busca avançada. Facilita a comunicação e promove<br />
           uma comunidade de suporte para melhorar a qualidade de vida.
         </p>
-        <div>
+        {/* <div>
           <Link to="/cadastroPessoa" type="button" className="button3">
             Crie já seu cadastro
           </Link>
-        </div>
+        </div> */}
       </div>
       <div className='imageAbout'>
         <img src={imageAbout} alt="image" className="aboutImage" />

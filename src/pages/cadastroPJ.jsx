@@ -9,8 +9,14 @@ function CadastroPJ () {
   const [nome, setNome] = useState('');
   const [email, setEmail] = useState('');
   const [cnpj, setCnpj] = useState('');
-  const [dataNascimento, setDataNascimento] = useState('');
+  const [rua, setRua] = useState('');
+  const [numero, setNumero] = useState('');
+  const [bairro, setBairro] = useState('');
+  const [cidade, setCidade] = useState('');
+  const [CEP, setCEP] = useState('');
   const [telefone, setTelefone] = useState('');
+  const [site, setSite] = useState('');
+  const [redesocial, setRedeSocial] = useState('');
   const [senha, setSenha] = useState('');
   const [confirmacaoSenha, setConfirmacaoSenha] = useState('');
   const [mensagemErro, setMensagemErro] = useState ('');
@@ -57,56 +63,155 @@ function CadastroPJ () {
   return (
 
     <div className='tela-cadastroPessoa'>
+    <div className='slogan'>
+      <Link to="/">
+        <img src={imageSlogan} alt="Slogan" className="Slogan" />
+      </Link>
+    </div>
+  
+    <div className="white-box-cadastro">
+      <form onSubmit={handleSubmit} className="form-container">
+        <div>
+          <input
+            className='input-cadastroPessoa'
+            type="text"
+            value={nomeCompleto}
+            onChange={(evento) => setNomeCompleto(evento.target.value)}
+            placeholder='Nome da Clínica ou Hospital'
+            required
+          />
+          <label>Digite o nome da Clínica ou Hospital</label>
+        </div>
+  
+        <div>
+          <input
+            className='input-cadastroPessoa'
+            type="text"
+            value={cnpj}
+            onChange={(evento) => setCnpj(evento.target.value)}
+            placeholder='__.___.___/____-__'
+            required
+          />
+          <label>Digite seu CNPJ</label>
+        </div>
+  
+        <div>
+          <input
+            className='input-cadastroPessoa'
+            type="text"
+            value={rua}
+            onChange={(evento) => setRua(evento.target.value)}
+            placeholder='Rua Exemplo da Silva'
+            required
+          />
+          <label>Digite sua rua</label>
+        </div>
+  
+        <div className="inputs-row">
+  <div className="half-width">
+    <input className='input-cadastroPessoa' type="number" value={numero} onChange={(evento) => setNumero(evento.target.value)} placeholder='Número' required />
+    <label>Digite o número</label>
+  </div>
 
-      <div className='slogan'>
-      <Link to="/"><img src={imageSlogan} alt="Slogan" className="Slogan" /></Link>
-      </div>
-
-      <div className="white-box-cadastro">
-      <br/>
-      <form onSubmit={handleSubmit}>
+  <div className="half-width">
+    <input className='input-cadastroPessoa' type="text" value={bairro} onChange={(evento) => setBairro(evento.target.value)} placeholder='Bairro' required />
+    <label>Digite o bairro</label>
+  </div>
+</div>
+  
         <div>
-          <label className='label-input-cadastroPessoa'>
-          <input className='input-cadastroPessoa' type="text" value={nomeCompleto} onChange={(evento) => setNomeCompleto(evento.target.value)} placeholder='Razão Social'required/><br/>
-          </label>
+          <input
+            className='input-cadastroPessoa'
+            type="text"
+            value={cidade}
+            onChange={(evento) => setCidade(evento.target.value)}
+            placeholder='Cidade'
+            required
+          />
+          <label>Digite a cidade</label>
         </div>
+  
         <div>
-          <label className='label-input-cadastroPessoa'>
-          <input className='input-cadastroPessoa' type="nome-usuario" value={nome} onChange={(evento) => setNome(evento.target.value)} placeholder='Nome usuário' required/><br/>
-          </label>
+          <input
+            className='input-cadastroPessoa'
+            type="text"
+            value={CEP}
+            onChange={(evento) => setCEP(evento.target.value)}
+            placeholder='__.___.___'
+            required
+          />
+          <label>Digite seu CEP</label>
         </div>
+  
         <div>
-          <label className='label-input-cadastroPessoa'>
-          <input className='input-cadastroPessoa' type="email" value={email} onChange={(evento) => setEmail(evento.target.value)} placeholder='E-mail' required/><br/>
-          </label>
+          <input
+            className='input-cadastroPessoa'
+            type="text"
+            value={telefone}
+            onChange={(evento) => setTelefone(evento.target.value)}
+            placeholder='__.___.___'
+            required
+          />
+          <label>Digite seu telefone</label>
         </div>
+  
         <div>
-          <label className='label-input-cadastroPessoa'>
-          <input className='input-cadastroPessoa' type="text" value={cnpj} onChange={(evento) => setCnpj(evento.target.value)} placeholder='CNPJ' minLength={11} maxLength={11}  required /> <br/>
-          </label> 
+          <input
+            className='input-cadastroPessoa'
+            type="url"
+            value={site}
+            onChange={(evento) => setSite(evento.target.value)}
+            placeholder='http://www.exemplo.com'
+            required
+          />
+          <label>Digite seu site</label>
         </div>
+  
         <div>
-          <label className='label-input-cadastroPessoa'>
-          <input className='input-cadastroPessoa' type="tel" value={telefone} onChange={(evento) => setTelefone(evento.target.value)} placeholder='Telefone' required/><br/>
-          </label>
+          <input
+            className='input-cadastroPessoa'
+            type="url"
+            value={redesocial}
+            onChange={(evento) => setRedeSocial(evento.target.value)}
+            placeholder='@exemplo'
+            required
+          />
+          <label>Digite sua rede social</label>
         </div>
+  
         <div>
-          <label className='label-input-cadastroPessoa'>
-          <input className='input-cadastroPessoa' type="password" value={senha} onChange={(evento) => setSenha(evento.target.value)} placeholder='Senha' required/><br/>
-          Senha deve conter no minimo 6 digitos, uma letra minúscula e maiúscula e um caractere especial.</label>
+          <input
+            className='input-cadastroPessoa'
+            type="email"
+            value={email}
+            onChange={(evento) => setEmail(evento.target.value)}
+            placeholder='exemplo@gmail.com'
+            required
+          />
+          <label>Digite seu email</label>
         </div>
+  
         <div>
-          <label className='label-input-cadastroPessoa'>
-          <input className='input-cadastroPessoa' type="password" value={confirmacaoSenha} onChange={(evento) => setConfirmacaoSenha(evento.target.value)} placeholder='Confirme sua Senha' required/><br/>
-          </label>
+          <input
+            className='input-cadastroPessoa'
+            type="password"
+            value={senha}
+            onChange={(evento) => setSenha(evento.target.value)}
+            placeholder='Senha'
+            required
+          />
+          <label>Senha deve conter no mínimo 6 dígitos, uma letra minúscula e maiúscula e um caractere especial.</label>
         </div>
+  
         <button className="submit" type="submit">Cadastrar</button>
       </form>
-      </div>
-      {mensagemErro && <p style={{ color: 'red' }}>{mensagemErro}</p>}
+  
+      {mensagemErro && <p className='error-message'>{mensagemErro}</p>}
       <Link to="/login" className='link-login'>Já possui cadastro? Faça Login</Link>
-      
     </div>
+  </div>
+  
+    
   );
 };
 
