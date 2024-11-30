@@ -203,12 +203,12 @@ function CadastroPJ () {
           <label>Senha deve conter no mínimo 6 dígitos, uma letra minúscula e maiúscula e um caractere especial.</label>
         </div>
   
-        <button className="submit" type="submit">Cadastrar</button>
       </form>
   
+    </div>
+        <button className="submit" type="submit" style={{backgroundColor: "#407BFF", borderRadius: 15}}>Cadastrar</button>
       {mensagemErro && <p className='error-message'>{mensagemErro}</p>}
       <Link to="/login" className='link-login'>Já possui cadastro? Faça Login</Link>
-    </div>
   </div>
   
     
