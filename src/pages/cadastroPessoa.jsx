@@ -5,7 +5,7 @@ import '../styles/cadastroPessoa.css';
 import imageSlogan from '../assets/Slogan.png';
 
 function Cadastro() {
-  const [nome, setNome] = useState('');
+  const [nome, setNomeCompleto] = useState('');
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
   const [confirmacaoSenha, setConfirmacaoSenha] = useState('');
@@ -41,7 +41,7 @@ function Cadastro() {
     const usuario = { nome, email, senha, roles};
     console.log('Corpo da requisição:', usuario);
     try {
-      const response = await axios.post('http://localhost:8080/auth/register', usuario);
+      const response = await axios.post('http://localhost:8080/api/pacientes/novo', usuario);
       console.log('Resposta do servidor:', response.data);
       setSuccesso(true);
       setError('');
