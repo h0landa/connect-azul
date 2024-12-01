@@ -35,7 +35,7 @@ function Login() {
   // Form Submission Handler
   const handleSubmit = async (event) => {
     event.preventDefault();
-  
+
     try {
       // Fazendo a requisição ao servidor para autenticar
       const response = await axios.post(
@@ -64,25 +64,25 @@ function Login() {
       setError("Login ou senha inválidos ou erro de conexão.");
     }
   };
-  
+
 
   // Render Login Form
   const renderLoginForm = () => (
     <form onSubmit={handleSubmit}>
       <div className="white-box">
         <h1 className="bem-vindo">Bem-Vindo</h1>
-        
+
         {renderInputField(
-          "username", 
-          "Digite seu e-mail", 
-          "username", 
+          "username",
+          "Digite seu e-mail",
+          "username",
           loginData.username
         )}
-        
+
         {renderInputField(
-          "password", 
+          "password",
           "Digite sua senha",
-          "password", 
+          "password",
           loginData.password
         )}
 
@@ -93,7 +93,7 @@ function Login() {
         <Link to="/cadastroPessoa" className="cadastro">
           Não é usuário? Cadastre-se
         </Link>
-        
+
         <button className="submit" type="submit">
           Avançar
         </button>

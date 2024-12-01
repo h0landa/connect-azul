@@ -76,7 +76,7 @@
 
 @media (min-width: 1200px) {
   .recursos {
-    height: 1060px;
+    height: 100vh;
   }
 
   .cabecalhoImage{
