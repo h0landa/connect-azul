@@ -1,0 +1,46 @@
+.tela-perfil {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .clinica-info {
+    margin-bottom: 20px;
+  }
+  
+  .contato-item,
+  .endereco-item {
+    margin-bottom: 10px;
+  }
+  
+  .profissionais-list {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .profissional-item {
+    margin-bottom: 5px;
+  }
+  
+  .adicionar-profissional {
+    margin-top: 20px;
+  }
+  
+  .adicionar-profissional input {
+    margin-right: 10px;
+    padding: 5px;
+  }
+  
+  .adicionar-profissional button {
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .adicionar-profissional button:hover {
+    background-color: #0056b3;
+  }
+  
