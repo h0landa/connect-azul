@@ -74,16 +74,18 @@ function Login() {
 
         {renderInputField(
           "username",
-          "Digite seu e-mail",
+          "exemplo@gmail.com",
           "username",
-          loginData.username
+          loginData.username,
+          "Digite seu email"
         )}
 
         {renderInputField(
           "password",
-          "Digite sua senha",
+          "*******",
           "password",
-          loginData.password
+          loginData.password,
+          "Digite sua senha"
         )}
 
         {error && <p className="error-message">{error}</p>}
@@ -102,8 +104,9 @@ function Login() {
   );
 
   // Reusable Input Field Renderer
-  const renderInputField = (name, placeholder, type, value) => (
+  const renderInputField = (name, placeholder, type, value, label) => (
     <label className="label-login">
+        <label style={{marginBottom:5}}>{label}</label>
       <input
         name={name}
         className="input-login"
