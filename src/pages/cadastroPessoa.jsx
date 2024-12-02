@@ -188,12 +188,12 @@ function Cadastro() {
             </label>
           </div>
           
-        </form>
-      </div>
       <Link to="/login" className="link-login">Já possui cadastro? Faça Login</Link>
           {error && <div className="error-message">{error}</div>}
           {successo && <div className="successo-message">Cadastro realizado com sucesso!</div>}
           <button className="submit" type="submit"  style={{ backgroundColor: "#407BFF", borderRadius: 15 }}>Cadastrar</button>
+        </form>
+      </div>
     </div>
   );
 }

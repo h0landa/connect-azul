@@ -241,7 +241,7 @@ function CadastroPJ() {
             </label>
           </div>
 
-          {/* <div>
+          <div>
             <label>Confirme sua senha</label>
             <input
               className="input-cadastroPessoa"
@@ -254,10 +254,8 @@ function CadastroPJ() {
               aria-label="Confirmação de senha"
               required
             />
-          </div> */}
+          </div>
 
-        </form>
-      </div>
         {mensagemErro && <p className="error-message">{mensagemErro}</p>}
         <Link to="/login" className="link-login">
           Já possui cadastro? Faça Login
@@ -269,6 +267,8 @@ function CadastroPJ() {
           >
             Cadastrar
           </button>
+        </form>
+      </div>
     </div>
   );
 }

@@ -29,6 +29,7 @@ function Navbar() {
     }
   };
 
+  console.log(localStorage.getItem("Token"), 'ssksksk')
   return (
     <nav style={styles.navbar}>
       <ul style={styles.navList}>
@@ -49,11 +50,14 @@ function Navbar() {
           </li>          
         ))}
 
+          {
+            localStorage.getItem("token") == null ?
           <li>
           <Link to="/pesquisa" type="button" className="button-30"   style={{ paddingTop: 5,paddingBottom:5 }}>
               PROCURAR ClÍNICAS
           </Link>
-          </li>
+          </li> : null
+          }
       </ul>
     </nav>
   );
