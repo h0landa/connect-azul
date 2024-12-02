@@ -256,6 +256,12 @@ function CadastroPJ() {
             />
           </div>
 
+        </form>
+      </div>
+        {mensagemErro && <p className="error-message">{mensagemErro}</p>}
+        <Link to="/login" className="link-login">
+          Já possui cadastro? Faça Login
+        </Link>
           <button
             className="submit"
             type="submit"
@@ -263,12 +269,6 @@ function CadastroPJ() {
           >
             Cadastrar
           </button>
-        </form>
-        {mensagemErro && <p className="error-message">{mensagemErro}</p>}
-        <Link to="/login" className="link-login">
-          Já possui cadastro? Faça Login
-        </Link>
-      </div>
     </div>
   );
 }
