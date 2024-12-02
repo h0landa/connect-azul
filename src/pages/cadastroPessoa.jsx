@@ -6,6 +6,14 @@ import imageSlogan from '../assets/Slogan.png';
 
 function Cadastro() {
   const [nome, setNomeCompleto] = useState('');
+  const [cpf, setCpf] = useState('');
+  const [data, setData] = useState('');
+  const [telefone, setTelefone] = useState('');
+  const [rua, setRua] = useState("");
+  const [numero, setNumero] = useState("");
+  const [bairro, setBairro] = useState("");
+  const [cidade, setCidade] = useState("");
+  const [cep, setCep] = useState("");
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
   const [confirmacaoSenha, setConfirmacaoSenha] = useState('');
@@ -61,39 +69,131 @@ function Cadastro() {
       <div className="slogan">
         <Link to="/"><img src={imageSlogan} alt="Slogan" className="Slogan" /></Link>
       </div>
-      <div className="white-box-cadastroPessoa">
-        <br />
-        <form onSubmit={handleSubmit}>
+
+      <div className="white-box-cadastro">
+        <form onSubmit={handleSubmit} className="form-container">
+          <div>
+              <label>Digite seu nome completo</label>
+              <input  className="input-cadastroPessoa" type="text" value={nome} onChange={(evento) => setNome(evento.target.value)} placeholder="Nome usuário" required />
+          </div>
           
-            <label className="label-input-cadastroPessoa">
-              <input className="input-cadastroPessoa" type="text" value={nome} onChange={(evento) => setNome(evento.target.value)} placeholder="Nome usuário" required /><br />
-            </label>
+          <div>
+          <label>Digite seu CPF</label>
+              <input className="input-cadastroPessoa" type="text" value={cpf} onChange={(evento) => setCpf(evento.target.value)} placeholder="***.***.***-**" required />
+          </div>
           
-          
-            <label className="label-input-cadastroPessoa">
-              <input className="input-cadastroPessoa" type="email" value={email} onChange={(evento) => setEmail(evento.target.value)} placeholder="E-mail" required /><br />
-            </label>
-          
-          
-            <label className="label-input-cadastroPessoa">
-              <input className="input-cadastroPessoa" type="password" value={senha} onChange={(evento) => setSenha(evento.target.value)} placeholder="Senha" minLength={6} required /><br />
-            </label>
-            <div className='alerta-senha'>
-            Senha deve conter no mínimo 10 dígitos, uma letra minúscula,
-             uma maiúscula e um caractere especial.
+          <div>
+          <label>Digite sua data de nascimento</label>
+              <input className="input-cadastroPessoa" type="date" value={data} onChange={(evento) => setData(evento.target.value)} placeholder="**/**/****" required />
+          </div>
+
+          <div>
+          <label>Digite seu telefone</label>
+              <input className="input-cadastroPessoa" type="text" value={telefone} onChange={(evento) => setTelefone(evento.target.value)} placeholder="(**) *****-****" required />
+          </div>
+
+          <div>
+            <label>Digite sua rua</label>
+            <input
+              className="input-cadastroPessoa"
+              type="text"
+              value={rua}
+              onChange={(evento) => setRua(evento.target.value)}
+              placeholder="Rua Exemplo da Silva"
+              aria-label="Rua"
+              required
+            />
+          </div>
+
+          <div className="inputs-row">
+            <div className="half-width">
+              <label>Digite o número</label>
+              <input
+                className="input-cadastroPessoa"
+                type="number"
+                value={numero}
+                onChange={(evento) => setNumero(evento.target.value)}
+                placeholder="Número"
+                aria-label="Número"
+                required
+              />
             </div>
+
+            <div className="half-width">
+              <label>Digite o bairro</label>
+              <input
+                className="input-cadastroPessoa"
+                type="text"
+                value={bairro}
+                onChange={(evento) => setBairro(evento.target.value)}
+                placeholder="Bairro"
+                aria-label="Bairro"
+                required
+              />
+            </div>
+          </div>
+
+          <div>
+            <label>Digite a cidade</label>
+            <input
+              className="input-cadastroPessoa"
+              type="text"
+              value={cidade}
+              onChange={(evento) => setCidade(evento.target.value)}
+              placeholder="Cidade"
+              aria-label="Cidade"
+              required
+            />
+          </div>
+
+          <div>
+            <label>Digite seu CEP</label>
+            <input
+              className="input-cadastroPessoa"
+              type="text"
+              value={cep}
+              onChange={(evento) => setCep(evento.target.value)}
+              placeholder="__.___.___"
+              aria-label="CEP"
+              required
+            />
+          </div>
           
-          
-            <label className="label-input-cadastroPessoa">
-              <input className="input-cadastroPessoa" type="password" value={confirmacaoSenha} onChange={(evento) => setConfirmacaoSenha(evento.target.value)} placeholder="Confirme sua Senha" required /><br />
+          <div>
+            <label>Digite seu email</label>
+            <input
+              className="input-cadastroPessoa"
+              type="email"
+              value={email}
+              onChange={(evento) => setEmail(evento.target.value)}
+              placeholder="exemplo@gmail.com"
+              aria-label="E-mail"
+              required
+            />
+          </div>
+
+          <div>
+            <input
+              className="input-cadastroPessoa"
+              type="password"
+              value={senha}
+              onChange={(evento) => setSenha(evento.target.value)}
+              placeholder="Senha"
+              aria-label="Senha"
+              required
+            />
+            <label>
+              A senha deve conter no mínimo 6 dígitos, uma letra maiúscula, uma
+              minúscula e um caractere especial.
             </label>
+          </div>
           
-          {error && <div className="error-message">{error}</div>}
-          {successo && <div className="successo-message">Cadastro realizado com sucesso!</div>}
-          <button className="submit-cadastroPessoa" type="submit">Cadastrar</button>
         </form>
       </div>
       <Link to="/login" className="link-login">Já possui cadastro? Faça Login</Link>
+          {error && <div className="error-message">{error}</div>}
+          {successo && <div className="successo-message">Cadastro realizado com sucesso!</div>}
+          <button className="submit" type="submit"  style={{ backgroundColor: "#407BFF", borderRadius: 15 }}>Cadastrar</button>
     </div>
   );
 }

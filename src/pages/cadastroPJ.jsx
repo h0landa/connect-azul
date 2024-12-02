@@ -241,7 +241,7 @@ function CadastroPJ() {
             </label>
           </div>
 
-          <div>
+          {/* <div>
             <label>Confirme sua senha</label>
             <input
               className="input-cadastroPessoa"
@@ -254,7 +254,7 @@ function CadastroPJ() {
               aria-label="Confirmação de senha"
               required
             />
-          </div>
+          </div> */}
 
         </form>
       </div>
