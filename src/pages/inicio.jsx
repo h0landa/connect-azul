@@ -219,21 +219,21 @@ function Inicio() {
             {
               title: 'Fonoaudiologia no Autismo:',
               links: [
-                { text: 'A Importância da Fonoaudiologia no Autismo - Autismo em Foco', href: '#link1' },
-                { text: 'Fonoaudiologia para crianças com autismo – Ipa Therapy', href: '#link2' }
+                { text: 'A Importância da Fonoaudiologia no Autismo - Autismo em Foco', href: 'https://fabianamartinsribeiro.com/a-importancia-da-fonoaudiologia-no-tratamento-do-autismo/#:~:text=Por%20causa%20desses%20desafios%2C%20o,conversar%20e%20compreender%20o%20outro.', target: "_blank"},
+                { text: 'Fonoaudiologia para crianças com autismo – Ipa Therapy', href: 'https://genialcare.com.br/blog/fonoaudiologia-no-autismo/', target: "_blank" }
               ]
             },
             {
               title: 'Terapia Ocupacional:',
               links: [
-                { text: 'Terapia Ocupacional e Autismo - Viva e Deixe Viver', href: '#link3' }
+                { text: 'Terapia Ocupacional e Autismo - Viva e Deixe Viver', href: 'https://www.vivaedeixeviver.org.br/', target: "_blank" }
               ]
             },
             {
               title: 'Musicoterapia no Autismo:',
               links: [
-                { text: 'Musicoterapia no Tratamento do Autismo', href: '#link4' },
-                { text: 'A influência da Musicoterapia em crianças com autismo – UCLSC', href: '#link5' }
+                { text: 'Musicoterapia no Tratamento do Autismo', href: 'https://autismoerealidade.org.br/2023/10/24/entenda-o-papel-da-musicoterapia-para-autistas/', target: "_blank" },
+                { text: 'A influência da Musicoterapia em crianças com autismo – UCLSC', href: 'https://journal.scientificsociety.net/index.php/sobre/article/view/644', target: "_blank" }
               ]
             }
           ].map((resource, index) => (
@@ -242,7 +242,7 @@ function Inicio() {
               <ul>
                 {resource.links.map((link, linkIndex) => (
                   <li key={linkIndex}>
-                    <a href={link.href}>{link.text}</a>
+                    <a href={link.href} target={link.target || '_self'}>{link.text}</a>
                   </li>
                 ))}
               </ul>
@@ -252,6 +252,7 @@ function Inicio() {
       </div>
     </section>
   );
+  
 
   return (
     <>
