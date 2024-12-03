@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 // Import CSS
@@ -11,16 +11,10 @@ import '../styles/contato.css';
 // Import Assets
 import imageElipse from '../assets/Ellipse.png';
 import imageBebe from '../assets/Child.png';
-import imageSlogan from '../assets/Slogan.png';
 import imageAbout from '../assets/imageAbout.png';
 import cabecalho from '../assets/cabecalho.png';
 import Avatar from '../assets/Avatar.png'
 
-// Social Media Icons
-import Whatsapp from '../assets/whatsapp.png';
-import Telefone from '../assets/telefone.png';
-import Youtube from '../assets/youtube.png';
-import Instagram from '../assets/instagram.png';
 
 function Navbar() {
   const smoothScroll = (event, targetId) => {
@@ -31,26 +25,28 @@ function Navbar() {
     }
   };
 
-  console.log(localStorage.getItem("token"),'jsjsj')
+  const navigate = useNavigate();
   const handleLogout = async () => {
     const token = localStorage.getItem("token");
-    
+    console.log(localStorage.getItem("token"))
     try {
-      await axios.delete('http://localhost:8080/auth/logout', {}, {
+      await axios.delete('http://localhost:8080/auth/logout', {
         headers: {
           Authorization: `Bearer ${token}`, // Passando o token como header
-        }
+        },
+        withCredentials: true,
       });
-      
+  
       // Limpar o token localStorage ou cookie
       localStorage.removeItem('token');
-      
+      localStorage.removeItem("clinicaId");
+  
       // Redirecionar para a página de login ou outra página
-      history.push('/Inicio');
+      navigate('/telaPrincipal')
     } catch (error) {
       console.error('Erro ao fazer logout', error);
     }
-  };
+  };  
   return (
     <nav style={styles.navbar}>
       <ul style={styles.navList}>
@@ -231,54 +227,12 @@ function Inicio() {
     </section>
   );
 
-  const renderContactSection = () => (
-    <section className="contato" id="contato">
-      <div className="bola fundo-bola-1"></div>
-      <div className="bola fundo-bola-2"></div>
-      <div className="bola fundo-bola-3"></div>
-
-      <div className="formulario">
-        <h2></h2>
-        <form>
-          <input
-            type="email"
-            placeholder="Digite seu email"
-            className="input-email"
-          />
-          <textarea
-            placeholder="Digite sua mensagem"
-            className="input-mensagem"
-          ></textarea>
-          <button type="submit" className="botao-enviar">
-            Enviar
-          </button>
-        </form>
-      </div>
-
-      <div className="informacoes-contato">
-        <h2>Contato</h2>
-        <div className="icones-contato">
-          <img src={Whatsapp} alt="whatsapp" className="Whatsapp" />
-          <img src={Telefone} alt="telefone" className="Telefone" />
-          <img src={Youtube} alt="youtube" className="Youtube" />
-          <img src={Instagram} alt="instagram" className="Instagram" />
-        </div>
-      </div>
-    </section>
-  );
-
   return (
     <>
       <Navbar />
-
-      {/* <div className='slogan'>
-        <Link to="/"><img src={imageSlogan} alt="Slogan" className="Slogan" /></Link>
-      </div> */}
-
       {renderHeroSection()}
       {renderAboutSection()}
       {renderResourcesSection()}
-      {renderContactSection()}
 
       {isVisible && (
         <button

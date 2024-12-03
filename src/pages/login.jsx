@@ -35,7 +35,7 @@ function Login() {
   // Form Submission Handler
   const handleSubmit = async (event) => {
     event.preventDefault();
-
+  
     try {
       // Fazendo a requisição ao servidor para autenticar
       const response = await axios.post(
@@ -50,13 +50,17 @@ function Login() {
           }
         }
       );
-
+  
       // Log da resposta do servidor
       console.log("Resposta do servidor:", response.data);
-
-      // Se o token for gerado corretamente, armazená-lo no localStorage
-      localStorage.setItem("token", response.data);
-
+  
+      // Extraindo os dados da resposta
+      const { clinicaId, token } = response.data;
+  
+      // Armazenando o token e clinicaId no localStorage
+      localStorage.setItem("token", token);
+      localStorage.setItem("clinicaId", clinicaId);
+  
       // Redireciona para a tela principal
       navigate("/telaPrincipal");
     } catch (err) {
@@ -64,6 +68,7 @@ function Login() {
       setError("Login ou senha inválidos ou erro de conexão.");
     }
   };
+  
 
 
   // Render Login Form
