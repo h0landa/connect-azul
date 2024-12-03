@@ -4,7 +4,7 @@ import axios from "axios";
 import "../styles/cadastroPJ.css";
 import imageSlogan from "../assets/Slogan.png";
 import InputMask from 'react-input-mask';
-import { useNavigate } from 'react-router-dom';
+
 
 function CadastroPJ() {
   const [nome, setNome] = useState("");
@@ -23,16 +23,20 @@ function CadastroPJ() {
   const [mensagemErro, setMensagemErro] = useState("");
   const [roles] = useState("USER");
 
-  const navigate = useNavigate();
+  const [carregando, setCarregando] = useState(false);
 
   const handleSubmit = async (evento) => {
     evento.preventDefault();
-
+    if (carregando) return; // Prevenir submit adicional
+  
+    setCarregando(true);
+  
     if (senha !== confirmacaoSenha) {
       setMensagemErro("Senhas não coincidem!");
+      setCarregando(false); // Libera o botão em caso de erro
       return;
     }
-
+  
     const contatos = [
       {
         telefone: parseInt(telefone, 10),
@@ -40,7 +44,7 @@ function CadastroPJ() {
         redeSocial,
       },
     ];
-
+  
     const enderecos = [
       {
         rua,
@@ -50,34 +54,32 @@ function CadastroPJ() {
         cep,
       },
     ];
-
+  
     const usuario = {
       nome,
       email,
       senha,
       roles,
     };
-
-    const empresa = {nome, cnpj, contatos, enderecos, usuario};
-
-    console.log(empresa);
-
+  
+    const empresa = { nome, cnpj, contatos, enderecos, usuario };
+  
     try {
-      await axios.post("http://localhost:8080/api/clinicas/novo", empresa);
-      
+      const response = await axios.post(
+        "http://localhost:8080/api/clinicas/novo",
+        empresa
+      );
+      console.log(response.data);
+      setMensagemErro(""); // Limpa mensagem de erro
       setTimeout(() => {
-      navigate('/login');
-    }, 3000);
-      setMensagemErro(""); // Limpa a mensagem de erro ao enviar com sucesso
+        navigate('/login');
+          }, 3000);
     } catch (erro) {
       console.error("Erro ao enviar os dados:", erro);
       setMensagemErro("Erro ao cadastrar. Tente novamente mais tarde.");
-
-      // setTimeout(() => {
-      //   navigate('/login');
-      //      }, 3000);
     }
   };
+  
 
   return (
     <div className="tela-cadastroPessoa">

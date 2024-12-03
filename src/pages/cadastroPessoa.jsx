@@ -59,9 +59,9 @@ function Cadastro() {
       setSuccesso(true);
       setError('');
       
-        setTimeout(() => {
-           navigate('/login');
-              }, 3000);
+      setTimeout(() => {
+          navigate('/login');
+            }, 3000);
 
     } catch (erro) {
       console.error('Erro ao enviar os dados:', erro);
