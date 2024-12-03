@@ -78,11 +78,11 @@ function Login() {
         <h1 className="bem-vindo">Bem-Vindo</h1>
 
         {renderInputField(
-          "username",
-          "exemplo@gmail.com",
-          "username",
+          "Nome",
+          "maria da silva",
+          "Nome",
           loginData.username,
-          "Digite seu email"
+          "Digite seu nome"
         )}
 
         {renderInputField(
