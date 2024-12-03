@@ -14,9 +14,13 @@ const TelaPerfilClinica = () => {
   const [cep, setCep] = useState("");
   const [cpf, setCpf] = useState('');
   const [dataNascimento, setDataNascimento] = useState('');
-  const [novoProfissional, setNovoProfissional] = useState({ nome: "", especialidade: "" });
+  const [nomeCompleto, setNomeCompleto] = useState('');
+  const [nome, setNome] = useState('');
+  const [experiencia, setExperiencia] = useState(true);
+  const [faixaEtaria, setFaixaEtaria] = useState('JOVEM');
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+
 
   console.log(localStorage.getItem("clinicaId"), localStorage.getItem("token"))
   useEffect(() => {
@@ -52,30 +56,26 @@ const TelaPerfilClinica = () => {
 
     const fetchProfissionais = async () => {
       try {
-        // Obtenha o clinicaId do localStorage
         const clinicaId = localStorage.getItem("clinicaId");
         if (!clinicaId) throw new Error("Clinica ID não encontrado no localStorage");
-
-        // Faça a chamada à API usando o ID da clínica
+    
         const token = localStorage.getItem("token");
-
-        const response = await axios.get(`http://localhost:8080/api/clinica-profissionais`, {
+    
+        const response = await axios.get(`http://localhost:8080/api/clinica-profissionais/clinica/${clinicaId}`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
           withCredentials: true,
         });
-
-        // Os dados da resposta já estão disponíveis em response.data
+    
         const data = response.data;
-        console.log(data)
-
-        // Atualize o estado com os dados da clínica e profissionais
-        // Supondo que os profissionais venham da resposta da API
-        setLoading(false); // Defina o estado de carregamento como falso quando os dados estiverem prontos
+    
+        // Atualizar o estado com os profissionais da API
+        setProfissionais(data || []);
+        setLoading(false);
       } catch (error) {
-        console.error("Erro ao buscar dados da clínica:", error);
-        setError("Erro ao carregar os dados da clínica.");
+        console.error("Erro ao buscar profissionais:", error);
+        setError("Erro ao carregar os profissionais.");
         setLoading(false);
       }
     };
@@ -83,14 +83,23 @@ const TelaPerfilClinica = () => {
     fetchClinica();
   }, []);
 
-  const handleAdicionarProfissional = () => {
-    if (novoProfissional.nome && novoProfissional.especialidade) {
-      setProfissionais((prev) => [
-        ...prev,
-        { id: prev.length + 1, ...novoProfissional },
-      ]);
-      setNovoProfissional({ nome: "", especialidade: "" }); // Limpar os campos após adicionar
-    }
+  const handleAdicionarProfissional = async () => {
+    const especialidade = {nome}
+    const endereco = {rua, numero, bairro, cep, cidade}
+
+    const profissional = {nomeCompleto, cpf, dataNascimento, endereco, especialidade, faixaEtaria, experiencia}
+
+    const clinicaId = localStorage.getItem("clinicaId");
+    if (!clinicaId) throw new Error("Clinica ID não encontrado no localStorage");
+
+    const token = localStorage.getItem("token");
+
+    const response = await axios.post(`http://localhost:8080/api/clinica-profissionais/novo?clinicaId=${clinicaId}`, profissional,{
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      withCredentials: true,
+    });
   };
 
   if (loading) {
@@ -108,7 +117,7 @@ const TelaPerfilClinica = () => {
     <h2>Informações da Clínica</h2>
     <div className="clinica-detalhes">
     <div className="coluna">
-    <p><strong>Nome:</strong> {clinica.nome}</p>
+    <p><strong>Nome:</strong> {clinica?.nome ? clinica.nome : "Sem nome"}</p>
     </div>
     <div className="coluna">
     <p><strong>CNPJ:</strong> {clinica.cnpj}</p></div>
@@ -159,9 +168,24 @@ const TelaPerfilClinica = () => {
     ))}
   </section>
 
-<section  className="clinica-info">
-<h2>Profissionais</h2>
-</section>
+  <section className="clinica-info">
+    <h2>Profissionais</h2>
+    {profissionais.length > 0 ? (
+      <ul className="profissionais-list">
+        {profissionais.map((profissional) => (
+          <li key={profissional.id} className="profissional-item">
+            <p><strong>Nome:</strong> {profissional.profissional.nomeCompleto}</p>
+            <p><strong>CPF:</strong> {profissional.profissional.cpf}</p>
+            <p><strong>Data de Nascimento:</strong> {new Date(profissional.profissional.dataNascimento).toLocaleDateString()}</p>
+            <p><strong>Especialidade:</strong> {profissional.profissional.especialidade?.nome || "Não informado"}</p>
+            <p><strong>Endereço:</strong> {`${profissional.profissional.endereco.rua}, ${profissional.profissional.endereco.numero}, ${profissional.profissional.endereco.bairro} - ${profissional.profissional.endereco.cidade}/${profissional.profissional.endereco.estado}`}</p>
+          </li>
+        ))}
+      </ul>
+    ) : (
+      <p>Nenhum profissional encontrado.</p>
+    )}
+  </section>
 
   <section className="clinica-info">
     <h2>Adicionar profissionais</h2>
@@ -169,7 +193,7 @@ const TelaPerfilClinica = () => {
     <ul className="profissionais-list">
       {profissionais.map((profissional) => (
         <li key={profissional.id} className="profissional-item">
-          {profissional.nome} - {profissional.especialidade}
+          {profissional.nomeCompleto} - {profissional.especialidade}
         </li>
       ))}
     </ul>
@@ -178,9 +202,9 @@ const TelaPerfilClinica = () => {
         <input
           type="text"
           placeholder="Nome"
-          value={novoProfissional.nome}
+          value={nomeCompleto}
           onChange={(e) =>
-            setNovoProfissional({ ...novoProfissional, nome: e.target.value })
+            setNomeCompleto(e.target.value)
           }
         />
               <InputMask mask="999.999.999-99" className="input-cadastroPessoa" type="text" value={cpf} onChange={(evento) => setCpf(evento.target.value)} placeholder="***.***.***-**" required />
@@ -198,12 +222,9 @@ const TelaPerfilClinica = () => {
         <input
           type="text"
           placeholder="Especialidade"
-          value={novoProfissional.especialidade}
+          value={nome}
           onChange={(e) =>
-            setNovoProfissional({
-              ...novoProfissional,
-              especialidade: e.target.value,
-            })
+            setNome(e.target.value)
           }
         />
 
