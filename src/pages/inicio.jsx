@@ -88,6 +88,7 @@ function Navbar() {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
+            
           }}>
 
           {
@@ -115,8 +116,7 @@ function Navbar() {
           cursor: 'pointer',
           transition: 'background-color 0.3s ease',
         }}
-        onMouseOver={(e) => (e.target.style.backgroundColor = '#d9363e')}
-        onMouseOut={(e) => (e.target.style.backgroundColor = '#ff4d4f')}
+  
       >
         <span>Sair</span>
         <svg
