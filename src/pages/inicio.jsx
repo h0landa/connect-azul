@@ -25,6 +25,7 @@ function Navbar() {
     }
   };
 
+  console.log(localStorage.getItem("token"))
   const navigate = useNavigate();
   const handleLogout = async () => {
     const token = localStorage.getItem("token");
@@ -41,12 +42,13 @@ function Navbar() {
       localStorage.removeItem("clinicaId");
   
       // Redirecionar para a página de login ou outra página
-      navigate('/telaPrincipal')
+      navigate('/login')
     } catch (error) {
       console.log(error)
       console.error('Erro ao fazer logout', error);
     }
   };  
+  console.log(localStorage.getItem("token"), localStorage.getItem("clinicaId"))
   return (
     <nav style={styles.navbar}>
       <ul style={styles.navList}>
@@ -68,7 +70,7 @@ function Navbar() {
         ))}
 
           {
-            localStorage.getItem("token")? 
+            localStorage.getItem("token") ? 
           <li>
           <Link to="/pesquisa" type="button" className="button-30"   style={{ paddingTop: 5,paddingBottom:5 }}>
               PROCURAR ClÍNICAS
@@ -85,9 +87,9 @@ function Navbar() {
           </li>:null
           }
            {
-            localStorage.getItem("token")?
+            localStorage.getItem("token") ?
             <li>
-      <button 
+      <button  
         onClick={handleLogout}
         className="sair-button button-34-red" 
         style={{ display: 'flex', alignItems: 'center', gap: '8px', marginLeft: 10 }}
@@ -138,7 +140,7 @@ function Inicio() {
           precisa para cuidar de quem você ama.
         </p>
         {
-          localStorage.getItem('token')?
+          localStorage.getItem('token') ?
           null:
 
         <div className="botoes">

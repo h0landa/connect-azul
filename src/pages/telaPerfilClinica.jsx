@@ -10,6 +10,7 @@ const TelaPerfilClinica = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  console.log(localStorage.getItem("clinicaId"), localStorage.getItem("token"))
   useEffect(() => {
     const fetchClinica = async () => {
       try {

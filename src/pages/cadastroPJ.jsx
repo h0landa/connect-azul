@@ -4,6 +4,7 @@ import axios from "axios";
 import "../styles/cadastroPJ.css";
 import imageSlogan from "../assets/Slogan.png";
 import InputMask from 'react-input-mask';
+import { useNavigate } from 'react-router-dom';
 
 
 function CadastroPJ() {
@@ -22,7 +23,7 @@ function CadastroPJ() {
   const [confirmacaoSenha, setConfirmacaoSenha] = useState("");
   const [mensagemErro, setMensagemErro] = useState("");
   const [roles] = useState("USER");
-
+  const navigate = useNavigate();
   const [carregando, setCarregando] = useState(false);
 
   const handleSubmit = async (evento) => {
@@ -39,7 +40,7 @@ function CadastroPJ() {
   
     const contatos = [
       {
-        telefone: parseInt(telefone, 10),
+        telefone: parseInt(telefone.replace(/[^0-9]/g, ""),10),
         site,
         redeSocial,
       },
@@ -62,21 +63,24 @@ function CadastroPJ() {
       roles,
     };
   
-    const empresa = { nome, cnpj, contatos, enderecos, usuario };
+    const empresa = {nome, cnpj, contatos, enderecos, usuario};
   
+    console.log(empresa);
     try {
       const response = await axios.post(
         "http://localhost:8080/api/clinicas/novo",
         empresa
       );
-      console.log(response.data);
       setMensagemErro(""); // Limpa mensagem de erro
       setTimeout(() => {
         navigate('/login');
           }, 3000);
     } catch (erro) {
       console.error("Erro ao enviar os dados:", erro);
-      setMensagemErro("Erro ao cadastrar. Tente novamente mais tarde.");
+      // setMensagemErro("Erro ao cadastrar. Tente novamente mais tarde.");
+      setTimeout(() => {
+        navigate('/login');
+          }, 3000);
     }
   };
   
