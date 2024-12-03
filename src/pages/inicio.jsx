@@ -77,7 +77,7 @@ function Navbar() {
           }
 
           {
-            localStorage.getItem("token")?
+            localStorage.getItem("token") && localStorage.getItem("clinicaId")?
           <li style={{ marginLeft: 'auto' }} >
             <Link to="/telaPerfilClinica">
             <img src={Avatar} alt="Child" style={{width:50, height:50}}/>
