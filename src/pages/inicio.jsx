@@ -28,7 +28,6 @@ function Navbar() {
   const navigate = useNavigate();
   const handleLogout = async () => {
     const token = localStorage.getItem("token");
-    console.log(localStorage.getItem("token"))
     try {
       await axios.delete('http://localhost:8080/auth/logout', {
         headers: {
@@ -44,6 +43,7 @@ function Navbar() {
       // Redirecionar para a página de login ou outra página
       navigate('/telaPrincipal')
     } catch (error) {
+      console.log(error)
       console.error('Erro ao fazer logout', error);
     }
   };  
@@ -150,7 +150,7 @@ function Inicio() {
           </Link>
           
         </div>
-       } 
+        } 
       </div>
       <div className="image-container">
         <img src={imageElipse} alt="Elipse" className="background-image" />

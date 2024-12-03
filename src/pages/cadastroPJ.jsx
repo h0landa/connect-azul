@@ -4,6 +4,7 @@ import axios from "axios";
 import "../styles/cadastroPJ.css";
 import imageSlogan from "../assets/Slogan.png";
 import InputMask from 'react-input-mask';
+import { useNavigate } from 'react-router-dom';
 
 function CadastroPJ() {
   const [nome, setNome] = useState("");
@@ -21,6 +22,8 @@ function CadastroPJ() {
   const [confirmacaoSenha, setConfirmacaoSenha] = useState("");
   const [mensagemErro, setMensagemErro] = useState("");
   const [roles] = useState("USER");
+
+  const navigate = useNavigate();
 
   const handleSubmit = async (evento) => {
     evento.preventDefault();
@@ -62,14 +65,17 @@ function CadastroPJ() {
     try {
       await axios.post("http://localhost:8080/api/clinicas/novo", empresa);
       
+      setTimeout(() => {
+      navigate('/login');
+    }, 3000);
       setMensagemErro(""); // Limpa a mensagem de erro ao enviar com sucesso
     } catch (erro) {
       console.error("Erro ao enviar os dados:", erro);
       setMensagemErro("Erro ao cadastrar. Tente novamente mais tarde.");
 
-      setTimeout(() => {
-        navigate('/login');
-           }, 3000);
+      // setTimeout(() => {
+      //   navigate('/login');
+      //      }, 3000);
     }
   };
 
@@ -208,7 +214,7 @@ function CadastroPJ() {
             <label>Digite sua rede social</label>
             <input
               className="input-cadastroPessoa"
-              type="url"
+              type="text"
               value={redeSocial}
               onChange={(evento) => setRedeSocial(evento.target.value)}
               placeholder="@exemplo"

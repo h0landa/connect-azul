@@ -88,9 +88,17 @@ function Cadastro() {
               <InputMask mask="999.999.999-99" className="input-cadastroPessoa" type="text" value={cpf} onChange={(evento) => setCpf(evento.target.value)} placeholder="***.***.***-**" required />
           </div>
           
-          <div>
-          <label>Digite sua data de nascimento</label>
-              <InputMask  mask="99/99/9999" className="input-cadastroPessoa" type="date" value={data} onChange={(evento) => setData(evento.target.value)} placeholder="**/**/****" required />
+           <div>
+            <label>Digite sua data de nascimento</label>
+            <InputMask
+              mask="99/99/9999"
+              className="input-cadastroPessoa"
+              type="text"
+              value={data}
+              onChange={(evento) => setData(evento.target.value)}
+              placeholder="DD/MM/AAAA"
+              required
+            />
           </div>
 
           <div>
