@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "../styles/telaPerfilClinica.css";
 import axios from "axios";
 import InputMask from 'react-input-mask';
+import { useNavigate } from 'react-router-dom';
 
 const TelaPerfilClinica = () => {
   // Estado para armazenar os dados da clínica e lista de profissionais
@@ -11,6 +12,7 @@ const TelaPerfilClinica = () => {
   const [numero, setNumero] = useState("");
   const [bairro, setBairro] = useState("");
   const [cidade, setCidade] = useState("");
+  const [a, seta] = useState("");
   const [cep, setCep] = useState("");
   const [cpf, setCpf] = useState('');
   const [dataNascimento, setDataNascimento] = useState('');
@@ -20,9 +22,8 @@ const TelaPerfilClinica = () => {
   const [faixaEtaria, setFaixaEtaria] = useState('JOVEM');
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
-
-  console.log(localStorage.getItem("clinicaId"), localStorage.getItem("token"))
   useEffect(() => {
     const fetchClinica = async () => {
       try {
@@ -54,9 +55,16 @@ const TelaPerfilClinica = () => {
       }
     };
 
+
+    fetchClinica();
+  }, []);
+  
+  useEffect(() => {
+
     const fetchProfissionais = async () => {
       try {
         const clinicaId = localStorage.getItem("clinicaId");
+        console.log(localStorage.getItem("clinicaId"))
         if (!clinicaId) throw new Error("Clinica ID não encontrado no localStorage");
     
         const token = localStorage.getItem("token");
@@ -69,7 +77,9 @@ const TelaPerfilClinica = () => {
         });
     
         const data = response.data;
-    
+        console.log(response.data)
+
+        //window.location.reload()
         // Atualizar o estado com os profissionais da API
         setProfissionais(data || []);
         setLoading(false);
@@ -79,9 +89,25 @@ const TelaPerfilClinica = () => {
         setLoading(false);
       }
     };
+
     fetchProfissionais()
-    fetchClinica();
-  }, []);
+  }, [clinica]);
+
+  const handleLogout = async (profissionalId) => {
+    const token = localStorage.getItem("token");
+    try {
+      await axios.delete(`http://localhost:8080/api/clinica-profissionais/${profissionalId}`, {
+        headers: {
+          Authorization: `Bearer ${token}`, // Passando o token como header
+        },
+        withCredentials: true,
+      });
+      // Redirecionar para a página de login ou outra página
+    } catch (error) {
+      console.log(error)
+      console.error('Erro ao excluir profissional', error);
+    }
+  };  
 
   const handleAdicionarProfissional = async () => {
     const especialidade = {nome}
@@ -100,6 +126,7 @@ const TelaPerfilClinica = () => {
       },
       withCredentials: true,
     });
+    seta('a')
   };
 
   if (loading) {
@@ -120,26 +147,26 @@ const TelaPerfilClinica = () => {
     <p><strong>Nome:</strong> {clinica?.nome ? clinica.nome : "Sem nome"}</p>
     </div>
     <div className="coluna">
-    <p><strong>CNPJ:</strong> {clinica.cnpj}</p></div>
+    <p><strong>CNPJ:</strong> {clinica?.cnpj}</p></div>
   </div>
   </section>
 
   <section className="clinica-info">
     <h2>Contatos</h2>
-    {clinica.contatos && clinica.contatos.map((contato) => (
+    {clinica?.contatos && clinica?.contatos?.map((contato) => (
       <div key={contato.id} className="clinica-detalhes">
         <div className="coluna">
-        <p><strong>Telefone:</strong> {contato.telefone}</p>
+        <p><strong>Telefone:</strong> {contato?.telefone}</p>
         <p>
           <strong>Site:</strong>{" "}
-          <a href={contato.site} target="_blank" rel="noopener noreferrer" style={{color:'black'}}>
-            {contato.site}
+          <a href={contato?.site} target="_blank" rel="noopener noreferrer" style={{color:'black'}}>
+            {contato?.site}
           </a>
         </p>
         </div>
         <div className="coluna">
         <p>
-            <p><strong>Rede Social:</strong> {contato.redeSocial}{" "}</p>
+            <p><strong>Rede Social:</strong> {contato?.redeSocial}{" "}</p>
         </p>
         </div>
       </div>
@@ -148,20 +175,20 @@ const TelaPerfilClinica = () => {
 
   <section className="clinica-info">
     <h2>Endereços</h2>
-    {clinica.enderecos && clinica.enderecos.map((endereco) => (
+    {clinica?.enderecos && clinica?.enderecos?.map((endereco) => (
       <div key={endereco.id} className="clinica-detalhes">
         <div className="coluna">
         <p>
-          <strong>Rua:</strong> {endereco.rua}, {endereco.numero}
+          <strong>Rua:</strong> {endereco?.rua}, {endereco?.numero}
         </p>
         <p>
-          <strong>Bairro:</strong> {endereco.bairro} - {endereco.cidade}/{endereco.estado}
+          <strong>Bairro:</strong> {endereco?.bairro} - {endereco?.cidade}/{endereco?.estado}
         </p>
         </div>
         <div className="coluna">
-          <p><strong>CEP:</strong> {endereco.cep}</p>
-          {endereco.complemento && (
-            <p><strong>Complemento:</strong> {endereco.complemento}</p>
+          <p><strong>CEP:</strong> {endereco?.cep}</p>
+          {endereco?.complemento && (
+            <p><strong>Complemento:</strong> {endereco?.complemento}</p>
         )}
         </div>
       </div>
@@ -174,6 +201,41 @@ const TelaPerfilClinica = () => {
       <ul className="profissionais-list">
         {profissionais.map((profissional) => (
           <li key={profissional.id} className="profissional-item">
+        <button  
+        onClick={() => handleLogout(profissional.id)}
+        className="sair-button button-34-red" 
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: '8px',
+          padding: '8px 16px',
+          backgroundColor: '#ff4d4f',
+          color: '#fff',
+          border: 'none',
+          cursor: 'pointer',
+          transition: 'background-color 0.3s ease',
+        }}
+  
+      >
+       <svg 
+  xmlns="http://www.w3.org/2000/svg" 
+  width="24" 
+  height="24" 
+  viewBox="0 0 24 24" 
+  fill="none" 
+  stroke="currentColor" 
+  stroke-width="2" 
+  stroke-linecap="round" 
+  stroke-linejoin="round"
+>
+  <path d="M3 6h18" />
+  <path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
+  <rect x="5" y="6" width="14" height="14" rx="2" ry="2" />
+  <line x1="10" y1="11" x2="10" y2="17" />
+  <line x1="14" y1="11" x2="14" y2="17" />
+</svg>
+
+      </button>
             <p><strong>Nome:</strong> {profissional.profissional.nomeCompleto}</p>
             <p><strong>CPF:</strong> {profissional.profissional.cpf}</p>
             <p><strong>Data de Nascimento:</strong> {new Date(profissional.profissional.dataNascimento).toLocaleDateString()}</p>
@@ -189,12 +251,15 @@ const TelaPerfilClinica = () => {
 
   <section className="clinica-info">
     <h2>Adicionar profissionais</h2>
-    <div></div>
+
     <ul className="profissionais-list">
       {profissionais.map((profissional) => (
-        <li key={profissional.id} className="profissional-item">
-          {profissional.nomeCompleto} - {profissional.especialidade}
-        </li>
+        <>
+
+          <li key={profissional.id} className="profissional-item">
+            {profissional.nomeCompleto} - {profissional.especialidade}
+          </li>
+        </>
       ))}
     </ul>
 

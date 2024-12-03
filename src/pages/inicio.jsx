@@ -55,13 +55,12 @@ function Navbar() {
         <div style={{    listStyle: 'none',
     padding: 0,
     display: 'flex',
-    justifyContent: 'space-between',}}>
+    justifyContent: 'space-between'}}>
 
         {[
           { id: 'inicio', label: 'Início' },
           { id: 'about', label: 'Como Funciona' },
           { id: 'recursos', label: 'Recursos' },
-          { id: 'contato', label: 'Contato' }
         ].map(({ id, label }) => (
           <li key={id}>
             <a 
@@ -75,7 +74,7 @@ function Navbar() {
         ))}
 
           {
-            localStorage.getItem("token") ? 
+            localStorage.getItem("token")  && localStorage.getItem("clinicaId") == "undefined" || localStorage.getItem("clinicaId") == ""? 
           <li>
           <Link to="/pesquisa" type="button" className="button-30"   style={{ paddingTop: 5,paddingBottom:5 }}>
               PROCURAR ClÍNICAS

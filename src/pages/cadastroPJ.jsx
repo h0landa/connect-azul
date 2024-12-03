@@ -196,7 +196,7 @@ function CadastroPJ() {
               className="input-cadastroPessoa"
               type="text"
               value={telefone}
-              mask="(99) 99999-9999"
+              mask="(99) 9999-9999"
               onChange={(evento) => setTelefone(evento.target.value)}
               placeholder="__.___.___"
               aria-label="Telefone"

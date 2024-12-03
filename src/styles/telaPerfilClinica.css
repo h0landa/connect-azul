@@ -99,6 +99,7 @@ a:hover {
 .clinica-detalhes p {
   margin: 0; /* Remove margens padrões */
 }
+
 .clinica-detalhes .coluna {
   justify-content: flex-start;
   align-items: flex-start;
