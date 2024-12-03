@@ -52,6 +52,11 @@ function Navbar() {
   return (
     <nav style={styles.navbar}>
       <ul style={styles.navList}>
+        <div style={{    listStyle: 'none',
+    padding: 0,
+    display: 'flex',
+    justifyContent: 'space-between',}}>
+
         {[
           { id: 'inicio', label: 'Início' },
           { id: 'about', label: 'Como Funciona' },
@@ -77,14 +82,21 @@ function Navbar() {
           </Link>
           </li>:null
           }
+        </div>
+
+        <div style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}>
 
           {
-            localStorage.getItem("token") && localStorage.getItem("clinicaId")?
-          <li style={{ marginLeft: 'auto' }} >
-            <Link to="/telaPerfilClinica">
-            <img src={Avatar} alt="Child" style={{width:50, height:50}}/>
-            </Link>
-          </li>:null
+            localStorage.getItem("token") && localStorage.getItem("clinicaId") && localStorage.getItem("clinicaId") !== "undefined" && localStorage.getItem("clinicaId") !== "" ?
+            <li style={{ marginRight: 20 }}>
+              <Link to="/telaPerfilClinica">
+                <img src={Avatar} alt="Child" style={{width: 50, height: 50}} />
+              </Link>
+            </li> : null
           }
            {
             localStorage.getItem("token") ?
@@ -92,7 +104,19 @@ function Navbar() {
       <button  
         onClick={handleLogout}
         className="sair-button button-34-red" 
-        style={{ display: 'flex', alignItems: 'center', gap: '8px', marginLeft: 10 }}
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: '8px',
+          padding: '8px 16px',
+          backgroundColor: '#ff4d4f',
+          color: '#fff',
+          border: 'none',
+          cursor: 'pointer',
+          transition: 'background-color 0.3s ease',
+        }}
+        onMouseOver={(e) => (e.target.style.backgroundColor = '#d9363e')}
+        onMouseOut={(e) => (e.target.style.backgroundColor = '#ff4d4f')}
       >
         <span>Sair</span>
         <svg
@@ -114,6 +138,7 @@ function Navbar() {
       </button>
     </li>
           :null}
+</div>
       </ul>
     </nav>
   );
@@ -260,7 +285,7 @@ const styles = {
     listStyle: 'none',
     padding: 0,
     display: 'flex',
-    justifyContent: 'flex-start',
+    justifyContent: 'space-between',
   },
   navItem: {
     color: '#fff',
