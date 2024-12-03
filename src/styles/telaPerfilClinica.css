@@ -52,7 +52,8 @@ a:hover {
 .adicionar-profissional input {
   flex: 1;
   padding: 10px;
-  border: 1px solid #ccc;
+  border: 1px solid #007bff;
+  background-color: #f1f1f1;
   border-radius: 4px;
 }
 
@@ -107,3 +108,22 @@ a:hover {
    /* Faz com que as colunas tenham largura igual */
   min-width: 0; /* Impede o estouro de conteúdo */
 }
+.submit {
+  width: 100%;
+  padding: 12px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  background-color: #4A90E2;
+  height: 100%;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.submit:hover {
+  background-color: #357ABD;
+}
+
