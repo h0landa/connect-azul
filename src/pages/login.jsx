@@ -79,10 +79,10 @@ function Login() {
 
         {renderInputField(
           "username",
-          "exemplo@gmail.com",
-          "username",
+          "maria da silva",
+          "text",
           loginData.username,
-          "Digite seu email"
+          "Digite seu nome"
         )}
 
         {renderInputField(

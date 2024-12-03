@@ -4,6 +4,7 @@ import axios from 'axios';
 import '../styles/cadastroPessoa.css';
 import imageSlogan from '../assets/Slogan.png';
 import InputMask from 'react-input-mask';
+import { useNavigate } from 'react-router-dom';
 
 function Cadastro() {
   const [nomeCompleto, setNomeCompleto] = useState('')
@@ -23,6 +24,7 @@ function Cadastro() {
   const [successo, setSuccesso] = useState(false);
   const [roles, setRoles] = useState('USER');
 
+  const navigate = useNavigate();
   const validarCPF = (cpf) => {
     cpf = cpf.replace(/[^\d]+/g, '');
     if (cpf.length !== 11 || /^(\d)\1+$/.test(cpf)) return false;

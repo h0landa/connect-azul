@@ -1,46 +1,129 @@
 .tela-perfil {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-    font-family: Arial, sans-serif;
-  }
-  
-  .clinica-info {
-    margin-bottom: 20px;
-  }
-  
-  .contato-item,
-  .endereco-item {
-    margin-bottom: 10px;
-  }
-  
-  .profissionais-list {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  .profissional-item {
-    margin-bottom: 5px;
-  }
-  
+  max-width: 900px;
+  margin: 20px auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  font-family:  Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
+
+h1, h2, h3 {
+  color: #4A90E2;
+}
+
+.clinica-info,
+.contatos,
+.enderecos,
+.profissionais {
+  margin-bottom: 20px;
+  padding: 15px;
+  background-color: #fff;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.contato-item,
+.endereco-item,
+.profissional-item {
+  margin-bottom: 15px;
+  padding: 10px;
+  background-color: #fdfdfd;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.adicionar-profissional {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.adicionar-profissional input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #007bff;
+  background-color: #f1f1f1;
+  border-radius: 4px;
+}
+
+.adicionar-profissional button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.adicionar-profissional button:hover {
+  background-color: #0056b3;
+}
+
+@media (max-width: 600px) {
   .adicionar-profissional {
-    margin-top: 20px;
+    flex-direction: column;
   }
-  
-  .adicionar-profissional input {
-    margin-right: 10px;
-    padding: 5px;
-  }
-  
+
+  .adicionar-profissional input,
   .adicionar-profissional button {
-    padding: 10px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    cursor: pointer;
+    width: 100%;
   }
-  
-  .adicionar-profissional button:hover {
-    background-color: #0056b3;
-  }
-  
+}
+.clinica-info {
+  margin-bottom: 20px;
+}
+
+.clinica-info h2 {
+  text-align: left; /* Alinha o título à esquerda */
+  margin-bottom: 10px; /* Dá um espaço abaixo do título */
+}
+
+.clinica-detalhes {
+  display: flex; /* Faz os elementos filhos ficarem lado a lado */
+  columns: 2;
+  justify-items: flex-start;
+  justify-content: space-evenly; /* Espaço entre os itens */
+}
+
+.clinica-detalhes p {
+  margin: 0; /* Remove margens padrões */
+}
+.clinica-detalhes .coluna {
+  justify-content: flex-start;
+  align-items: flex-start;
+  align-content: flex-start;
+  justify-items: flex-start;
+  flex: auto;
+   /* Faz com que as colunas tenham largura igual */
+  min-width: 0; /* Impede o estouro de conteúdo */
+}
+.submit {
+  width: 100%;
+  padding: 12px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  background-color: #4A90E2;
+  height: 100%;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.submit:hover {
+  background-color: #357ABD;
+}
+
