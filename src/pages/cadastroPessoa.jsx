@@ -6,9 +6,10 @@ import imageSlogan from '../assets/Slogan.png';
 import InputMask from 'react-input-mask';
 
 function Cadastro() {
+  const [nomeCompleto, setNomeCompleto] = useState('')
   const [nome, setNome] = useState('');
   const [cpf, setCpf] = useState('');
-  const [data, setData] = useState('');
+  const [dataNascimento, setDataNascimento] = useState('');
   const [telefone, setTelefone] = useState('');
   const [rua, setRua] = useState("");
   const [numero, setNumero] = useState("");
@@ -48,9 +49,12 @@ function Cadastro() {
 
     // Preparar os dados para envio
     const usuario = { nome, email, senha, roles};
-    console.log('Corpo da requisição:', usuario);
+    const endereco = {rua, numero, bairro, cep, cidade};
+    const paciente = {nomeCompleto, cpf, dataNascimento, endereco, usuario};
+
+    console.log('Corpo da requisição:', paciente);
     try {
-      const response = await axios.post('http://localhost:8080/api/pacientes/novo', usuario);
+      const response = await axios.post('http://localhost:8080/api/pacientes/novo', paciente);
       console.log('Resposta do servidor:', response.data);
       setSuccesso(true);
       setError('');
@@ -80,6 +84,11 @@ function Cadastro() {
         <form onSubmit={handleSubmit} className="form-container">
           <div>
               <label>Digite seu nome completo</label>
+              <input  className="input-cadastroPessoa" type="text" value={nomeCompleto} onChange={(evento) => setNomeCompleto(evento.target.value)} placeholder="Nome completo" required />
+          </div>
+
+          <div>
+              <label>Digite seu nome de usuário</label>
               <input  className="input-cadastroPessoa" type="text" value={nome} onChange={(evento) => setNome(evento.target.value)} placeholder="Nome usuário" required />
           </div>
           
@@ -94,8 +103,8 @@ function Cadastro() {
               //mask="99/99/9999"
               className="input-cadastroPessoa"
               type="date"
-              value={data}
-              onChange={(evento) => setData(evento.target.value)}
+              value={dataNascimento}
+              onChange={(evento) => setDataNascimento(evento.target.value)}
               placeholder="DD/MM/AAAA"
               required
             />
