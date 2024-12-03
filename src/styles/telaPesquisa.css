@@ -248,5 +248,36 @@ body {
   align-content: center;
 }
 
+/* Estilo do container do endereço */
+.endereco-container {
+  font-family: Arial, sans-serif;
+  margin-top: 15px;
+}
 
+/* Estilo do ícone de localização */
+.endereco-icon {
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+/* Estilo para os itens de endereço */
+.endereco {
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo para cada linha de endereço */
+.endereco-item {
+  margin: 5px 0;
+  color: #333;
+  font-size: 14px;
+}
+
+/* Adicionando destaque para o título dos campos */
+.endereco-item strong {
+  color: #007BFF;
+}
 
