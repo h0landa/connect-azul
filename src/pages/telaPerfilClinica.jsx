@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import "../styles/telaPerfilClinica.css";
 import axios from "axios";
 import InputMask from 'react-input-mask';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
+import imageSlogan from "../assets/Slogan.png";
 
 const TelaPerfilClinica = () => {
   // Estado para armazenar os dados da clínica e lista de profissionais
@@ -91,7 +92,7 @@ const TelaPerfilClinica = () => {
     };
 
     fetchProfissionais()
-  }, [clinica]);
+  }, [clinica, a]);
 
   const handleLogout = async (profissionalId) => {
     const token = localStorage.getItem("token");
@@ -103,6 +104,7 @@ const TelaPerfilClinica = () => {
         withCredentials: true,
       });
       // Redirecionar para a página de login ou outra página
+      seta('b')
     } catch (error) {
       console.log(error)
       console.error('Erro ao excluir profissional', error);
@@ -126,6 +128,16 @@ const TelaPerfilClinica = () => {
       },
       withCredentials: true,
     });
+    setRua('')
+    setNumero('')
+    setBairro('')
+    setCidade('')
+    setCep('')
+    setNomeCompleto('')
+    setCpf('')
+    setDataNascimento('')
+    setNome('')
+
     seta('a')
   };
 
@@ -138,6 +150,12 @@ const TelaPerfilClinica = () => {
   }
 
   return (
+    <>
+   <div className="slogan">
+        <Link to="/">
+          <img src={imageSlogan} alt="Slogan" className="Slogan" />
+        </Link>
+      </div>
     <div className="tela-perfil">
   <h1 style={{marginBottom:20}}>Perfil da Clínica</h1>
   <section className="clinica-info">
@@ -353,6 +371,7 @@ const TelaPerfilClinica = () => {
     </div>
   </section>
 </div>
+    </>
 
   );
 };
