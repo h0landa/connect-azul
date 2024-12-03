@@ -91,9 +91,9 @@ function Cadastro() {
            <div>
             <label>Digite sua data de nascimento</label>
             <InputMask
-              mask="99/99/9999"
+              //mask="99/99/9999"
               className="input-cadastroPessoa"
-              type="text"
+              type="date"
               value={data}
               onChange={(evento) => setData(evento.target.value)}
               placeholder="DD/MM/AAAA"
