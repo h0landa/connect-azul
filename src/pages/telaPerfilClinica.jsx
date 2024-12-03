@@ -65,55 +65,73 @@ const TelaPerfilClinica = () => {
 
   return (
     <div className="tela-perfil">
-      <h1>Perfil da Clínica</h1>
-      <div className="clinica-info">
-        <p><strong>Nome:</strong> {clinica.nome}</p>
-        <p><strong>CNPJ:</strong> {clinica.cnpj}</p>
-        <h3>Contatos</h3>
-        {clinica.contatos && clinica.contatos.map((contato) => (
-          <div key={contato.id} className="contato-item">
-            <p><strong>Telefone:</strong> {contato.telefone}</p>
-            <p>
-              <strong>Site:</strong>{" "}
-              <a href={contato.site} target="_blank" rel="noopener noreferrer">
-                {contato.site}
-              </a>
-            </p>
-            <p>
-              <strong>Rede Social:</strong>{" "}
-              <a href={contato.redeSocial} target="_blank" rel="noopener noreferrer">
-                {contato.redeSocial}
-              </a>
-            </p>
-          </div>
-        ))}
-        <h3>Endereços</h3>
-        {clinica.enderecos && clinica.enderecos.map((endereco) => (
-          <div key={endereco.id} className="endereco-item">
-            <p>
-              <strong>Rua:</strong> {endereco.rua}, {endereco.numero}
-            </p>
-            <p>
-              <strong>Bairro:</strong> {endereco.bairro} - {endereco.cidade}/{endereco.estado}
-            </p>
-            <p><strong>CEP:</strong> {endereco.cep}</p>
-            {endereco.complemento && (
-              <p><strong>Complemento:</strong> {endereco.complemento}</p>
-            )}
-          </div>
-        ))}
+  <h1 style={{marginBottom:20}}>Perfil da Clínica</h1>
+  <section className="clinica-info">
+    <h2>Informações da Clínica</h2>
+    <div className="clinica-detalhes">
+    <div className="coluna">
+    <p><strong>Nome:</strong> {clinica.nome}</p>
+    </div>
+    <div className="coluna">
+    <p><strong>CNPJ:</strong> {clinica.cnpj}</p></div>
+  </div>
+  </section>
+
+  <section className="clinica-info">
+    <h2>Contatos</h2>
+    {clinica.contatos && clinica.contatos.map((contato) => (
+      <div key={contato.id} className="clinica-detalhes">
+        <div className="coluna">
+        <p><strong>Telefone:</strong> {contato.telefone}</p>
+        <p>
+          <strong>Site:</strong>{" "}
+          <a href={contato.site} target="_blank" rel="noopener noreferrer" style={{color:'black'}}>
+            {contato.site}
+          </a>
+        </p>
+        </div>
+        <div className="coluna">
+        <p>
+            <p><strong>Rede Social:</strong> {contato.redeSocial}{" "}</p>
+        </p>
+        </div>
       </div>
+    ))}
+  </section>
 
-      <h2>Profissionais</h2>
-      <ul className="profissionais-list">
-        {profissionais.map((profissional) => (
-          <li key={profissional.id} className="profissional-item">
-            {profissional.nome} - {profissional.especialidade}
-          </li>
-        ))}
-      </ul>
+  <section className="clinica-info">
+    <h2>Endereços</h2>
+    {clinica.enderecos && clinica.enderecos.map((endereco) => (
+      <div key={endereco.id} className="clinica-detalhes">
+        <div className="coluna">
+        <p>
+          <strong>Rua:</strong> {endereco.rua}, {endereco.numero}
+        </p>
+        <p>
+          <strong>Bairro:</strong> {endereco.bairro} - {endereco.cidade}/{endereco.estado}
+        </p>
+        </div>
+        <div className="coluna">
+          <p><strong>CEP:</strong> {endereco.cep}</p>
+          {endereco.complemento && (
+            <p><strong>Complemento:</strong> {endereco.complemento}</p>
+        )}
+        </div>
+      </div>
+    ))}
+  </section>
 
-      <h3>Adicionar Profissional</h3>
+  <section className="clinica-info">
+    <h2>Profissionais</h2>
+    <div></div>
+    <ul className="profissionais-list">
+      {profissionais.map((profissional) => (
+        <li key={profissional.id} className="profissional-item">
+          {profissional.nome} - {profissional.especialidade}
+        </li>
+      ))}
+    </ul>
+
       <div className="adicionar-profissional">
         <input
           type="text"
@@ -134,9 +152,11 @@ const TelaPerfilClinica = () => {
             })
           }
         />
-        <button onClick={handleAdicionarProfissional}>Adicionar</button>
-      </div>
+      <button onClick={handleAdicionarProfissional}>Adicionar</button>
     </div>
+  </section>
+</div>
+
   );
 };
 
