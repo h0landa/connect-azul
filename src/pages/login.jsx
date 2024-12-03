@@ -78,9 +78,9 @@ function Login() {
         <h1 className="bem-vindo">Bem-Vindo</h1>
 
         {renderInputField(
-          "Nome",
+          "username",
           "maria da silva",
-          "Nome",
+          "text",
           loginData.username,
           "Digite seu nome"
         )}
