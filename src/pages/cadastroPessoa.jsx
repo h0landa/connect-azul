@@ -3,9 +3,10 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import '../styles/cadastroPessoa.css';
 import imageSlogan from '../assets/Slogan.png';
+import InputMask from 'react-input-mask';
 
 function Cadastro() {
-  const [nome, setNomeCompleto] = useState('');
+  const [nome, setNome] = useState('');
   const [cpf, setCpf] = useState('');
   const [data, setData] = useState('');
   const [telefone, setTelefone] = useState('');
@@ -64,6 +65,11 @@ function Cadastro() {
     }
   };
 
+  const validateEmail = (email) => {
+    const regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+    return regex.test(email);
+  };
+
   return (
     <div className="tela-cadastroPessoa">
       <div className="slogan">
@@ -79,17 +85,17 @@ function Cadastro() {
           
           <div>
           <label>Digite seu CPF</label>
-              <input className="input-cadastroPessoa" type="text" value={cpf} onChange={(evento) => setCpf(evento.target.value)} placeholder="***.***.***-**" required />
+              <InputMask mask="999.999.999-99" className="input-cadastroPessoa" type="text" value={cpf} onChange={(evento) => setCpf(evento.target.value)} placeholder="***.***.***-**" required />
           </div>
           
           <div>
           <label>Digite sua data de nascimento</label>
-              <input className="input-cadastroPessoa" type="date" value={data} onChange={(evento) => setData(evento.target.value)} placeholder="**/**/****" required />
+              <InputMask  mask="99/99/9999" className="input-cadastroPessoa" type="date" value={data} onChange={(evento) => setData(evento.target.value)} placeholder="**/**/****" required />
           </div>
 
           <div>
           <label>Digite seu telefone</label>
-              <input className="input-cadastroPessoa" type="text" value={telefone} onChange={(evento) => setTelefone(evento.target.value)} placeholder="(**) *****-****" required />
+              <InputMask  mask="(99) 99999-9999" className="input-cadastroPessoa" type="text" value={telefone} onChange={(evento) => setTelefone(evento.target.value)} placeholder="(**) *****-****" required />
           </div>
 
           <div>
@@ -148,10 +154,11 @@ function Cadastro() {
 
           <div>
             <label>Digite seu CEP</label>
-            <input
+            <InputMask
               className="input-cadastroPessoa"
               type="text"
               value={cep}
+              mask="99999-999"
               onChange={(evento) => setCep(evento.target.value)}
               placeholder="__.___.___"
               aria-label="CEP"
@@ -186,6 +193,22 @@ function Cadastro() {
               A senha deve conter no mínimo 6 dígitos, uma letra maiúscula, uma
               minúscula e um caractere especial.
             </label>
+          </div>
+
+          
+          <div>
+            <label>Confirme sua senha</label>
+            <input
+              className="input-cadastroPessoa"
+              type="password"
+              value={confirmacaoSenha}
+              onChange={(evento) =>
+                setConfirmacaoSenha(evento.target.value)
+              }
+              placeholder="Confirmação de senha"
+              aria-label="Confirmação de senha"
+              required
+            />
           </div>
           
       <Link to="/login" className="link-login">Já possui cadastro? Faça Login</Link>

@@ -124,3 +124,30 @@
   .back-to-top:hover {
     background-color: #4979B4
   }  
+  .button-34-red {
+    background: #F05E5E; /* Cor vermelha */
+    border-radius: 999px;
+    box-shadow: #F05E5E 0 10px 20px -10px;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-family: Inter, Helvetica, "Apple Color Emoji", "Segoe UI Emoji", NotoColorEmoji, "Noto Color Emoji", "Segoe UI Symbol", "Android Emoji", EmojiSymbols, -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+    opacity: 1;
+    outline: 0 solid transparent;
+    padding: 8px 18px;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    width: fit-content;
+    word-break: break-word;
+    border: 0;
+  }
+  
+  .button-34-red:hover {
+    background: #D94A4A; /* Cor ao passar o mouse */
+    box-shadow: #D94A4A 0 10px 20px -10px;
+  }
+  

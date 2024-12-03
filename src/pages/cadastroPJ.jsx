@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import "../styles/cadastroPJ.css";
 import imageSlogan from "../assets/Slogan.png";
+import InputMask from 'react-input-mask';
 
 function CadastroPJ() {
   const [nome, setNome] = useState("");
@@ -97,10 +98,11 @@ function CadastroPJ() {
 
           <div>
             <label>Digite seu CNPJ</label>
-            <input
+            <InputMask
               className="input-cadastroPessoa"
               type="text"
               value={cnpj}
+               mask="99.999.999/9999-99"
               onChange={(evento) => setCnpj(evento.target.value)}
               placeholder="__.___.___/____-__"
               aria-label="CNPJ"
@@ -164,10 +166,11 @@ function CadastroPJ() {
 
           <div>
             <label>Digite seu CEP</label>
-            <input
+            <InputMask
               className="input-cadastroPessoa"
               type="text"
               value={cep}
+              mask="99999-999"
               onChange={(evento) => setCep(evento.target.value)}
               placeholder="__.___.___"
               aria-label="CEP"
@@ -177,10 +180,11 @@ function CadastroPJ() {
 
           <div>
             <label>Digite seu telefone</label>
-            <input
+            <InputMask
               className="input-cadastroPessoa"
               type="text"
               value={telefone}
+              mask="(99) 99999-9999"
               onChange={(evento) => setTelefone(evento.target.value)}
               placeholder="__.___.___"
               aria-label="Telefone"

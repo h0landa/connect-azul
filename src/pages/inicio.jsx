@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 // Import CSS
 import '../styles/inicio.css';
@@ -13,6 +14,7 @@ import imageBebe from '../assets/Child.png';
 import imageSlogan from '../assets/Slogan.png';
 import imageAbout from '../assets/imageAbout.png';
 import cabecalho from '../assets/cabecalho.png';
+import Avatar from '../assets/Avatar.png'
 
 // Social Media Icons
 import Whatsapp from '../assets/whatsapp.png';
@@ -29,7 +31,26 @@ function Navbar() {
     }
   };
 
-  console.log(localStorage.getItem("Token"), 'ssksksk')
+  console.log(localStorage.getItem("token"),'jsjsj')
+  const handleLogout = async () => {
+    const token = localStorage.getItem("token");
+    
+    try {
+      await axios.delete('http://localhost:8080/auth/logout', {}, {
+        headers: {
+          Authorization: `Bearer ${token}`, // Passando o token como header
+        }
+      });
+      
+      // Limpar o token localStorage ou cookie
+      localStorage.removeItem('token');
+      
+      // Redirecionar para a página de login ou outra página
+      history.push('/Inicio');
+    } catch (error) {
+      console.error('Erro ao fazer logout', error);
+    }
+  };
   return (
     <nav style={styles.navbar}>
       <ul style={styles.navList}>
@@ -51,13 +72,50 @@ function Navbar() {
         ))}
 
           {
-            localStorage.getItem("token") == null ?
+            localStorage.getItem("token")? 
           <li>
           <Link to="/pesquisa" type="button" className="button-30"   style={{ paddingTop: 5,paddingBottom:5 }}>
               PROCURAR ClÍNICAS
           </Link>
-          </li> : null
+          </li>:null
           }
+
+          {
+            localStorage.getItem("token")?
+          <li style={{ marginLeft: 'auto' }} >
+            <Link to="/telaPerfilClinica">
+            <img src={Avatar} alt="Child" style={{width:50, height:50}}/>
+            </Link>
+          </li>:null
+          }
+           {
+            localStorage.getItem("token")?
+            <li>
+      <button 
+        onClick={handleLogout}
+        className="sair-button button-34-red" 
+        style={{ display: 'flex', alignItems: 'center', gap: '8px', marginLeft: 10 }}
+      >
+        <span>Sair</span>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          strokeWidth="2"
+          style={{ marginRight: 8 }}
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M9 12h6m0 0-3 3m3-3-3-3m5 3H5m2 6h10a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2z"
+          />
+        </svg>
+      </button>
+    </li>
+          :null}
       </ul>
     </nav>
   );
@@ -83,6 +141,10 @@ function Inicio() {
           Aqui, você é capaz de encontrar o apoio que <br />
           precisa para cuidar de quem você ama.
         </p>
+        {
+          localStorage.getItem('token')?
+          null:
+
         <div className="botoes">
           <Link to="/cadastroPessoa" type="button" className="button1">
             Sou um paciente
@@ -92,6 +154,7 @@ function Inicio() {
           </Link>
           
         </div>
+       } 
       </div>
       <div className="image-container">
         <img src={imageElipse} alt="Elipse" className="background-image" />
@@ -208,9 +271,9 @@ function Inicio() {
     <>
       <Navbar />
 
-      <div className='slogan'>
+      {/* <div className='slogan'>
         <Link to="/"><img src={imageSlogan} alt="Slogan" className="Slogan" /></Link>
-      </div>
+      </div> */}
 
       {renderHeroSection()}
       {renderAboutSection()}
